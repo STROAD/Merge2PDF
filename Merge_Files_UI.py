@@ -225,14 +225,14 @@ class Ui_MainWindow(object):
         # 임시 주석처리. 기능 추가 후 주석 해제하기.
         # self.toolButton_path.clicked.connect(MainWindow.select_folder)
         # self.Button_remove.clicked.connect(MainWindow.remove_file)
-        # self.Button_exit.clicked.connect(MainWindow.close)
+        self.Button_exit.clicked.connect(MainWindow.close)
         # self.action_help.triggered.connect(MainWindow.open_help)
         # self.Button_addfile.clicked.connect(MainWindow.add_files)
         # self.Button_addfolder.clicked.connect(MainWindow.add_folder)
         # self.Button_start.clicked.connect(MainWindow.start_merge)
         # self.action_files.triggered.connect(MainWindow.add_files)
         # self.action_floder.triggered.connect(MainWindow.add_folder)
-        # self.action_exit.triggered.connect(MainWindow.close)
+        self.action_exit.triggered.connect(MainWindow.close)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
