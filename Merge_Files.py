@@ -16,6 +16,9 @@ class MainWindow(QMainWindow):
     def add_folder(self):
         folder = QFileDialog.getExistingDirectory(self, "Select Folder")
 
+        file_list = os.listdir(folder)
+        file_list = [file for file in file_list if file.endswith(file_filter)]
+
 
 def close():
     QMainWindow.close()
