@@ -10,6 +10,10 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
 
+def select_folder():
+    pass
+
+
 def close():
     QMainWindow.close()
 
