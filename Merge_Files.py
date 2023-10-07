@@ -14,6 +14,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
     def add_folder(self):
+        """선택 폴더 내 (file_filter에 존재하는 확장자를 가진)모든 파일을 files_list widget에 추가"""
         list_widget = self.ui.files_list
 
         folder = QFileDialog.getExistingDirectory(self, "Select Folder")
