@@ -4,6 +4,9 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from Merge_Files_UI import Ui_MainWindow
 
 
+file_filter = (".pdf", ".png", ".jpg", ".jpeg", ".pptx", ".ppt")
+
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
