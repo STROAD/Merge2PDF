@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
         self.Button_addfolder.clicked.connect(MainWindow.add_folder)
         # self.Button_start.clicked.connect(MainWindow.start_merge)
         # self.action_files.triggered.connect(MainWindow.add_files)
-        # self.action_floder.triggered.connect(MainWindow.add_folder)
+        self.action_floder.triggered.connect(MainWindow.add_folder)
         self.action_exit.triggered.connect(MainWindow.close)
 
         QMetaObject.connectSlotsByName(MainWindow)

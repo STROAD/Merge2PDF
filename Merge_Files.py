@@ -14,10 +14,13 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
     def add_folder(self):
-        folder = QFileDialog.getExistingDirectory(self, "Select Folder")
+        list_widget = self.ui.files_list
 
-        file_list = os.listdir(folder)
-        file_list = [file for file in file_list if file.endswith(file_filter)]
+        folder = QFileDialog.getExistingDirectory(self, "Select Folder")
+        files_list = os.listdir(folder)
+        files_list = [file for file in files_list if file.endswith(file_filter)]
+
+        list_widget.addItems(files_list)
 
 
 def close():
