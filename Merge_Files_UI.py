@@ -228,7 +228,7 @@ class Ui_MainWindow(object):
         self.Button_exit.clicked.connect(MainWindow.close)
         # self.action_help.triggered.connect(MainWindow.open_help)
         # self.Button_addfile.clicked.connect(MainWindow.add_files)
-        # self.Button_addfolder.clicked.connect(MainWindow.add_folder)
+        self.Button_addfolder.clicked.connect(MainWindow.add_folder)
         # self.Button_start.clicked.connect(MainWindow.start_merge)
         # self.action_files.triggered.connect(MainWindow.add_files)
         # self.action_floder.triggered.connect(MainWindow.add_folder)

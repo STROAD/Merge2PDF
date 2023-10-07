@@ -1,5 +1,5 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from Merge_Files_UI import Ui_MainWindow
 
 
@@ -9,9 +9,8 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-
-def select_folder():
-    pass
+    def add_folder(self):
+        folder = QFileDialog.getExistingDirectory(self, "Select Folder")
 
 
 def close():
