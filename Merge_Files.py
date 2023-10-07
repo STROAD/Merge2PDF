@@ -1,4 +1,5 @@
 import sys
+import os
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from Merge_Files_UI import Ui_MainWindow
 
