@@ -40,6 +40,9 @@ class MainWindow(QMainWindow):
         )[0]
         list_widget.addItems(files)
 
+    def remove_file():
+        """iles_list widget에서 선택한 파일을 제거"""
+
 
 def close():
     QMainWindow.close()
