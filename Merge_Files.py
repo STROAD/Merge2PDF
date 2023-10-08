@@ -23,6 +23,11 @@ class MainWindow(QMainWindow):
 
         list_widget.addItems(files_list)
 
+    def add_files(self):
+        """선택 파일을 files_list widget에 추가
+        (file_filter에 존재하는 확장자를 가진 파일만 선택 가능)
+        """
+
 
 def close():
     QMainWindow.close()
