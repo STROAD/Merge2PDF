@@ -19,7 +19,11 @@ class MainWindow(QMainWindow):
 
         folder = QFileDialog.getExistingDirectory(self, "Select Folder")
         files_list = os.listdir(folder)
-        files_list = [file for file in files_list if file.endswith(file_filter)]
+        files_list = [
+            "".join((folder, "/", file))
+            for file in files_list
+            if file.endswith(file_filter)
+        ]
 
         list_widget.addItems(files_list)
 
