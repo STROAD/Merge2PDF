@@ -27,6 +27,14 @@ class MainWindow(QMainWindow):
         """선택 파일을 files_list widget에 추가
         (file_filter에 존재하는 확장자를 가진 파일만 선택 가능)
         """
+        list_widget = self.ui.files_list
+
+        files = QFileDialog.getOpenFileNames(
+            self,
+            "Select Files",
+            filter="Images (*.png *.jpg *.jpeg);;PDF (*.pdf);;PowerPoint (*.pptx *.ppt)",
+        )[0]
+        list_widget.addItems(files)
 
 
 def close():
