@@ -21,6 +21,7 @@ class MainWindow(QMainWindow):
             "/", "\\"
         )
 
+        # folder에 존재하는 모든 파일 중 file_filter의 확장자를 가진 파일들만 파일 경로와 파일명을 같이 저장
         files_list = [
             "".join((folder, "\\", file))
             for file in os.listdir(folder)
