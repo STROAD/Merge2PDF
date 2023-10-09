@@ -17,10 +17,12 @@ class MainWindow(QMainWindow):
         """선택 폴더 내 (file_filter에 존재하는 확장자를 가진)모든 파일을 files_list widget에 추가"""
         list_widget = self.ui.files_list
 
-        folder = QFileDialog.getExistingDirectory(self, "Select Folder")
+        folder = QFileDialog.getExistingDirectory(self, "Select Folder").replace(
+            "/", "\\"
+        )
         files_list = os.listdir(folder)
         files_list = [
-            "".join((folder, "/", file))
+            "".join((folder, "\\", file))
             for file in files_list
             if file.endswith(file_filter)
         ]
@@ -38,6 +40,10 @@ class MainWindow(QMainWindow):
             "Select Files",
             filter="사용자 지정 파일 (*.png *.jpg *.jpeg *.pdf *.pptx *.ppt)",
         )[0]
+
+        for i in range(len(files)):
+            files[i] = files[i].replace("/", "\\")
+
         list_widget.addItems(files)
 
     def remove_file(self):
