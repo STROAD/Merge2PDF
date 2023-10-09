@@ -11,6 +11,7 @@ from PySide6.QtGui import (
     QIcon,
 )
 from PySide6.QtWidgets import (
+    QAbstractItemView,
     QComboBox,
     QFrame,
     QLabel,
@@ -74,6 +75,7 @@ class Ui_MainWindow(object):
         self.files_list.setGeometry(QRect(10, 30, 431, 320))
         sizePolicy.setHeightForWidth(self.files_list.sizePolicy().hasHeightForWidth())
         self.files_list.setSizePolicy(sizePolicy)
+        self.files_list.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self.line1 = QFrame(self.centralwidget)
         self.line1.setObjectName("line1")
         self.line1.setGeometry(QRect(10, 390, 430, 16))
