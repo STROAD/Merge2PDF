@@ -54,6 +54,9 @@ class MainWindow(QMainWindow):
         for file in list_widget.selectedIndexes():
             list_widget.takeItem(file.row())
 
+    def select_folder():
+        """병합 완료된 파일을 다운로드할 폴더 선택"""
+
 
 def close():
     QMainWindow.close()
