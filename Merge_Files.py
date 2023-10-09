@@ -40,8 +40,12 @@ class MainWindow(QMainWindow):
         )[0]
         list_widget.addItems(files)
 
-    def remove_file():
+    def remove_file(self):
         """iles_list widget에서 선택한 파일을 제거"""
+        list_widget = self.ui.files_list
+
+        for file in list_widget.selectedIndexes():
+            list_widget.takeItem(file.row())
 
 
 def close():
