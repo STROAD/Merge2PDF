@@ -20,10 +20,10 @@ class MainWindow(QMainWindow):
         folder = QFileDialog.getExistingDirectory(self, "Select Folder").replace(
             "/", "\\"
         )
-        files_list = os.listdir(folder)
+
         files_list = [
             "".join((folder, "\\", file))
-            for file in files_list
+            for file in os.listdir(folder)
             if file.endswith(file_filter)
         ]
 
