@@ -36,7 +36,7 @@ class MainWindow(QMainWindow):
         files = QFileDialog.getOpenFileNames(
             self,
             "Select Files",
-            filter="Images (*.png *.jpg *.jpeg);;PDF (*.pdf);;PowerPoint (*.pptx *.ppt)",
+            filter="사용자 지정 파일 (*.png *.jpg *.jpeg *.pdf *.pptx *.ppt)",
         )[0]
         list_widget.addItems(files)
 
