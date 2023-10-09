@@ -54,8 +54,14 @@ class MainWindow(QMainWindow):
         for file in list_widget.selectedIndexes():
             list_widget.takeItem(file.row())
 
-    def select_folder():
+    def select_folder(self):
         """병합 완료된 파일을 다운로드할 폴더 선택"""
+
+        download_folder = QFileDialog.getExistingDirectory(
+            self, "Select Folder"
+        ).replace("/", "\\")
+
+        self.ui.lineEdit_path.setText(download_folder)
 
 
 def close():
