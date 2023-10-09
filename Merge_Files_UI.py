@@ -1,3 +1,4 @@
+import os
 from PySide6.QtCore import (
     QCoreApplication,
     QMetaObject,
@@ -318,7 +319,11 @@ class Ui_MainWindow(object):
             QCoreApplication.translate("MainWindow", "\ub2eb\uae30", None)
         )
         self.lineEdit_path.setInputMask("")
-        self.lineEdit_path.setText("")
+        self.lineEdit_path.setText(
+            QCoreApplication.translate(
+                "MainWindow", f"{os.getenv('USERPROFILE')}\\Downloads", None
+            )
+        )
         self.toolButton_path.setText(
             QCoreApplication.translate("MainWindow", "...", None)
         )
