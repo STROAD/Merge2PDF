@@ -63,6 +63,9 @@ class MainWindow(QMainWindow):
 
         self.ui.lineEdit_path.setText(download_folder)
 
+    def start_merge(self):
+        """파일 병합 시작"""
+
 
 def close():
     QMainWindow.close()
