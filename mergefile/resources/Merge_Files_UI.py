@@ -26,7 +26,7 @@ from PySide6.QtWidgets import (
     QToolButton,
     QWidget,
 )
-from resources import resources_rc
+from . import resources_rc
 
 
 class Ui_MainWindow(object):
