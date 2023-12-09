@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from resources.Merge_Files_UI import Ui_MainWindow
 
 
-file_filter = (".pdf", ".png", ".jpg", ".jpeg", ".pptx", ".ppt")
+file_filter = (".pdf", ".png", ".jpg", ".jpeg")
 
 
 class MainWindow(QMainWindow):
@@ -39,7 +39,7 @@ class MainWindow(QMainWindow):
         files = QFileDialog.getOpenFileNames(
             self,
             "Select Files",
-            filter="사용자 지정 파일 (*.png *.jpg *.jpeg *.pdf *.pptx *.ppt)",
+            filter="사용자 지정 파일 (*.png *.jpg *.jpeg *.pdf)",
         )[0]
 
         for i in range(len(files)):
