@@ -25,7 +25,7 @@ class MainWindow(QMainWindow):
 
     def add_folder(self):
         """선택 폴더 내 (file_filter에 존재하는 확장자를 가진)모든 파일을 files_list widget에 추가"""
-        list_widget = self.ui.files_list
+        file_list_widget = self.ui.files_list
 
         folder = QFileDialog.getExistingDirectory(self, "Select Folder").replace(
             "/", "\\"
@@ -38,13 +38,13 @@ class MainWindow(QMainWindow):
             if file.endswith((".pdf", ".png", ".jpg", ".jpeg"))
         ]
 
-        list_widget.addItems(files_list)
+        file_list_widget.addItems(files_list)
 
     def add_files(self):
         """선택 파일을 files_list widget에 추가
         (file_filter에 존재하는 확장자를 가진 파일만 선택 가능)
         """
-        list_widget = self.ui.files_list
+        file_list_widget = self.ui.files_list
 
         files = QFileDialog.getOpenFileNames(
             self,
@@ -55,14 +55,14 @@ class MainWindow(QMainWindow):
         for i in range(len(files)):
             files[i] = files[i].replace("/", "\\")
 
-        list_widget.addItems(files)
+        file_list_widget.addItems(files)
 
     def remove_file(self):
         """iles_list widget에서 선택한 파일을 제거"""
-        list_widget = self.ui.files_list
+        file_list_widget = self.ui.files_list
 
-        for file in list_widget.selectedIndexes():
-            list_widget.takeItem(file.row())
+        for file in file_list_widget.selectedIndexes():
+            file_list_widget.takeItem(file.row())
 
     def select_folder(self):
         """병합 완료된 파일을 다운로드할 폴더 선택"""
@@ -80,6 +80,7 @@ class MainWindow(QMainWindow):
             DownloadDirError: 파일 경로가 올바르지 않은 경우 발생
             FileNameError: 파일 이름이 올바르지 않은 경우 발생
         """
+        file_list_widget = self.ui.files_list
 
         download_dir = self.ui.lineEdit_path.text()
         file_name = self.ui.lineEdit_name.text()
