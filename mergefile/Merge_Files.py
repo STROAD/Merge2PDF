@@ -65,7 +65,12 @@ class MainWindow(QMainWindow):
         self.ui.lineEdit_path.setText(download_folder)
 
     def start_merge(self):
-        """파일 병합 시작"""
+        """파일 병합 시작
+
+        Raises:
+            DownloadDirError: 파일 경로가 올바르지 않은 경우 발생
+            FileNameError: 파일 이름이 올바르지 않은 경우 발생
+        """
 
         download_dir = self.ui.lineEdit_path.text()
         file_name = self.ui.lineEdit_name.text()
