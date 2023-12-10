@@ -1,7 +1,8 @@
 import sys
 import os
-from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
+from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from resources.Merge_Files_UI import Ui_MainWindow
+import re
 
 
 file_filter = (".pdf", ".png", ".jpg", ".jpeg")
@@ -65,6 +66,26 @@ class MainWindow(QMainWindow):
 
     def start_merge(self):
         """파일 병합 시작"""
+
+        download_dir = self.ui.lineEdit_path.text()
+        file_name = self.ui.lineEdit_name.text()
+
+        dir_pattern = r"^[a-zA-Z]:\\(?:[a-zA-Z0-9\s_@\-^!#$%&+={}\[\]]+\\)*[a-zA-Z0-9\s_@\-^!#$%&+={}]+\\?$"
+        name_pattern = r"^[a-zA-Z0-9_-]{1,255}$"
+        if not re.match(dir_pattern, download_dir):
+            QMessageBox.warning(self, "다운로드 위치 오류", "다운로드 위치가 잘못되었습니다.")
+            raise DownloadDirError
+        elif not re.match(name_pattern, file_name):
+            QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
+            raise FileNameError
+
+
+class DownloadDirError(Exception):
+    pass
+
+
+class FileNameError(Exception):
+    pass
 
 
 def close():
