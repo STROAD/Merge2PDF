@@ -3,6 +3,7 @@ import os
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from resources.Merge_Files_UI import Ui_MainWindow
 import re
+import utils
 
 
 class DownloadDirError(Exception):
@@ -81,6 +82,7 @@ class MainWindow(QMainWindow):
             FileNameError: 파일 이름이 올바르지 않은 경우 발생
         """
         file_list_widget = self.ui.files_list
+        file_format_cmbbox = self.ui.comboBox_format
 
         download_dir = self.ui.lineEdit_path.text()
         file_name = self.ui.lineEdit_name.text()
@@ -93,6 +95,15 @@ class MainWindow(QMainWindow):
         elif not re.match(name_pattern, file_name):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
             raise FileNameError
+
+        file_format = file_format_cmbbox.currentIndex()
+        files_list = [
+            file_list_widget.item(i).text() for i in range(file_list_widget.count())
+        ]
+        if file_format == 0:
+            utils.merge_to_pdf(files_list, download_dir, file_name, file_format)
+        else:
+            utils.merge_to_img(files_list, download_dir, file_name, file_format)
 
 
 if __name__ == "__main__":
