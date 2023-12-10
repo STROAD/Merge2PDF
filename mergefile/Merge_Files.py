@@ -5,7 +5,16 @@ from resources.Merge_Files_UI import Ui_MainWindow
 import re
 
 
-file_filter = (".pdf", ".png", ".jpg", ".jpeg")
+class DownloadDirError(Exception):
+    pass
+
+
+class FileNameError(Exception):
+    pass
+
+
+def close():
+    QMainWindow.close()
 
 
 class MainWindow(QMainWindow):
@@ -26,7 +35,7 @@ class MainWindow(QMainWindow):
         files_list = [
             "".join((folder, "\\", file))
             for file in os.listdir(folder)
-            if file.endswith(file_filter)
+            if file.endswith((".pdf", ".png", ".jpg", ".jpeg"))
         ]
 
         list_widget.addItems(files_list)
@@ -83,18 +92,6 @@ class MainWindow(QMainWindow):
         elif not re.match(name_pattern, file_name):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
             raise FileNameError
-
-
-class DownloadDirError(Exception):
-    pass
-
-
-class FileNameError(Exception):
-    pass
-
-
-def close():
-    QMainWindow.close()
 
 
 if __name__ == "__main__":
