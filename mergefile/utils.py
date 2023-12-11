@@ -3,6 +3,16 @@ import tempfile
 import fitz
 
 
+def create_temp_pdf():
+    """임시 PDF 파일 생성
+    비어있는 새로운 페이지 1개가 있는 임시 PDF 파일 생성
+
+    Returns:
+        temp_pdf_path (str): 임시 PDF 파일 경로
+
+    """
+
+
 def merge_to_pdf(files_list, save_dir, save_name, save_format):
     """PDF로 병합
 
