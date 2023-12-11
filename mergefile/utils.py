@@ -13,12 +13,12 @@ def create_temp_pdf():
     """
 
 
-def delete_temp_pdf(temp_pdf_path):
-    """임시 PDF 파일 삭제
-    create_temp_pdf 함수로 생성했던 임시 PDF 파일 삭제
+def delete_temp_file(temp_file_path):
+    """임시 파일 삭제
+    임의로 생성했던 임시 파일 삭제
 
     Args:
-        temp_pdf_path (str): 임시 PDF 파일 경로
+        temp_file_path (str): 삭제할 임시 파일의 경로
 
     """
 
