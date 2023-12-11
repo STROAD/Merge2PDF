@@ -99,7 +99,7 @@ class MainWindow(QMainWindow):
         files_list = [
             file_list_widget.item(i).text() for i in range(file_list_widget.count())
         ]
-        if file_format == 0:
+        if file_format == "pdf":
             utils.merge_to_pdf(files_list, download_dir, file_name, file_format)
         else:
             utils.merge_to_img(files_list, download_dir, file_name, file_format)
