@@ -13,6 +13,16 @@ def create_temp_pdf():
     """
 
 
+def delete_temp_pdf(temp_pdf_path):
+    """임시 PDF 파일 삭제
+    create_temp_pdf 함수로 생성했던 임시 PDF 파일 삭제
+
+    Args:
+        temp_pdf_path (str): 임시 PDF 파일 경로
+
+    """
+
+
 def merge_to_pdf(files_list, save_dir, save_name, save_format):
     """PDF로 병합
 
