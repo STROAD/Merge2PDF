@@ -11,6 +11,16 @@ def create_temp_pdf():
         temp_pdf_path (str): 임시 PDF 파일 경로
 
     """
+    temp_dir = tempfile.gettempdir()
+    temp_pdf_path = os.path.join(temp_dir, "temp_pdf_file.pdf")
+
+    temp_pdf = fitz.open()
+    temp_pdf.new_page()
+
+    temp_pdf.save(temp_pdf_path)
+    temp_pdf.close()
+
+    return temp_pdf_path
 
 
 def delete_temp_file(temp_file_path):
