@@ -51,6 +51,24 @@ def merge_to_pdf(files_list, save_dir, save_name, save_format):
         save_format (str): 병합된 파일을 저장할 파일 확장자
 
     """
+    temp_pdf_path = create_temp_pdf()
+
+    temp_pdf = fitz.open(temp_pdf_path)
+    for file in files_list:
+        doc = fitz.open(file)
+
+        if file.endswith(".pdf"):
+            temp_pdf.insert_pdf(doc)
+        else:
+            temp_pdf.insert_file(doc)
+
+        doc.close()
+
+    temp_pdf.delete_page(0)
+    temp_pdf.save(os.path.join(save_dir, save_name + "." + save_format))
+    temp_pdf.close()
+
+    delete_temp_file(temp_pdf_path)
 
 
 def merge_to_img(files_list, save_dir, save_name, save_format):
