@@ -3,6 +3,10 @@ import tempfile
 import fitz
 
 
+# constant
+TEMP_PDF_NAME = "temp_pdf_file.pdf"
+
+
 def create_temp_pdf():
     """임시 PDF 파일 생성
     비어있는 새로운 페이지 1개가 있는 임시 PDF 파일 생성
@@ -12,7 +16,7 @@ def create_temp_pdf():
 
     """
     temp_dir = tempfile.gettempdir()
-    temp_pdf_path = os.path.join(temp_dir, "temp_pdf_file.pdf")
+    temp_pdf_path = os.path.join(temp_dir, TEMP_PDF_NAME)
 
     temp_pdf = fitz.open()
     temp_pdf.new_page()
