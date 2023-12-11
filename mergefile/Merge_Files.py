@@ -38,7 +38,6 @@ class MainWindow(QMainWindow):
             for file in os.listdir(folder)
             if file.endswith((".pdf", ".png", ".jpg", ".jpeg"))
         ]
-
         file_list_widget.addItems(files_list)
 
     def add_files(self):
