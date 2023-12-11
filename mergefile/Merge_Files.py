@@ -95,7 +95,7 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
             raise FileNameError
 
-        file_format = file_format_cmbbox.currentIndex()
+        file_format = file_format_cmbbox.currentText()
         files_list = [
             file_list_widget.item(i).text() for i in range(file_list_widget.count())
         ]
