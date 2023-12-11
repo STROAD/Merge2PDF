@@ -18,6 +18,8 @@ def create_temp_pdf():
     temp_dir = tempfile.gettempdir()
     temp_pdf_path = os.path.join(temp_dir, TEMP_PDF_NAME)
 
+    delete_temp_file(temp_pdf_path)
+
     temp_pdf = fitz.open()
     temp_pdf.new_page()
 
