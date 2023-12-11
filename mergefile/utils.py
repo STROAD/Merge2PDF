@@ -21,6 +21,8 @@ def delete_temp_file(temp_file_path):
         temp_file_path (str): 삭제할 임시 파일의 경로
 
     """
+    if os.path.exists(temp_file_path):
+        os.remove(temp_file_path)
 
 
 def merge_to_pdf(files_list, save_dir, save_name, save_format):
