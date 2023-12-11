@@ -27,7 +27,7 @@ def create_temp_pdf():
     return temp_pdf_path
 
 
-def delete_temp_file(temp_file_path):
+def delete_temp_file(temp_file_path=os.path.join(tempfile.gettempdir(), TEMP_PDF_NAME)):
     """임시 파일 삭제
     임의로 생성했던 임시 파일 삭제
 
