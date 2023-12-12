@@ -83,6 +83,7 @@ class MainWindow(QMainWindow):
         Raises:
             DownloadDirError: 파일 경로가 올바르지 않은 경우 발생
             FileNameError: 파일 이름이 올바르지 않은 경우 발생
+            NoFileError: 병합할 파일이 없는 경우 발생
         """
         file_list_widget = self.ui.files_list
         file_format_cmbbox = self.ui.comboBox_format
