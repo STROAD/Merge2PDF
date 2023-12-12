@@ -112,6 +112,8 @@ class MainWindow(QMainWindow):
         else:
             utils.merge_to_img(files_list, download_dir, file_name, file_format)
 
+        QMessageBox.information(self, "파일 병합 완료", "파일 병합이 완료되었습니다.")
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
