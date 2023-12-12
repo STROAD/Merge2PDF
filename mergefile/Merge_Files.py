@@ -14,6 +14,10 @@ class FileNameError(Exception):
     pass
 
 
+class NoFileError(Exception):
+    pass
+
+
 def close():
     QMainWindow.close()
 
@@ -99,6 +103,10 @@ class MainWindow(QMainWindow):
         files_list = [
             file_list_widget.item(i).text() for i in range(file_list_widget.count())
         ]
+        if not files_list:
+            QMessageBox.warning(self, "파일 없음", "병합할 파일이 없습니다.")
+            raise NoFileError
+
         if file_format == "pdf":
             utils.merge_to_pdf(files_list, download_dir, file_name, file_format)
         else:
