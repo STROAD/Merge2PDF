@@ -99,8 +99,7 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
             raise FileNameError
 
-        pdf_compression_yes = self.ui.radioButton_yes.isChecked()
-        pdf_compression_no = self.ui.radioButton_no.isChecked()
+        pdf_compression = self.ui.radioButton_yes.isChecked()
         files_list = [
             file_list_widget.item(i).text() for i in range(file_list_widget.count())
         ]
@@ -108,7 +107,7 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "파일 없음", "병합할 파일이 없습니다.")
             raise NoFileError
 
-        utils.merge_to_pdf(files_list, download_dir, file_name)
+        utils.merge_to_pdf(files_list, download_dir, file_name, pdf_compression)
 
         QMessageBox.information(self, "파일 병합 완료", "파일 병합이 완료되었습니다.")
 

@@ -65,7 +65,13 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression):
         doc.close()
 
     temp_pdf.delete_page(0)
-    temp_pdf.save(os.path.join(save_dir, save_name + "." + pdf_compression))
+
+    save_name += ".pdf"
+    if pdf_compression:
+        temp_pdf.ez_save(os.path.join(save_dir, save_name))
+    else:
+        temp_pdf.save(os.path.join(save_dir, save_name))
+
     temp_pdf.close()
 
     delete_temp_file(temp_pdf_path)
