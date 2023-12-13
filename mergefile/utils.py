@@ -41,14 +41,14 @@ def delete_temp_file(temp_file_path=os.path.join(tempfile.gettempdir(), TEMP_PDF
         os.remove(temp_file_path)
 
 
-def merge_to_pdf(files_list, save_dir, save_name, save_format):
+def merge_to_pdf(files_list, save_dir, save_name, pdf_compression):
     """PDF로 병합
 
     Args:
         files_list (List[str]): 병합할 파일들의 경로가 담겨있는 리스트
         save_dir (str): 병합된 파일을 저장할 경로
         save_name (str): 병합된 파일을 저장할 이름
-        save_format (str): 병합된 파일을 저장할 파일 확장자
+        pdf_compression (str): PDF 압축 저장 여부
 
     """
     temp_pdf_path = create_temp_pdf()
@@ -65,19 +65,7 @@ def merge_to_pdf(files_list, save_dir, save_name, save_format):
         doc.close()
 
     temp_pdf.delete_page(0)
-    temp_pdf.save(os.path.join(save_dir, save_name + "." + save_format))
+    temp_pdf.save(os.path.join(save_dir, save_name + "." + pdf_compression))
     temp_pdf.close()
 
     delete_temp_file(temp_pdf_path)
-
-
-def merge_to_img(files_list, save_dir, save_name, save_format):
-    """이미지(.png or .jpg)로 병합
-
-    Args:
-        files_list (List[str]): 병합할 파일들의 경로가 담겨있는 리스트
-        save_dir (str): 병합된 파일을 저장할 경로
-        save_name (str): 병합된 파일을 저장할 이름
-        save_format (str): 병합된 파일을 저장할 파일 확장자
-
-    """

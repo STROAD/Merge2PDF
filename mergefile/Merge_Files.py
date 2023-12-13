@@ -61,7 +61,7 @@ class MainWindow(QMainWindow):
 
         file_list_widget.addItems(files)
 
-    def remove_file(self):
+    def remove_files(self):
         """iles_list widget에서 선택한 파일을 제거"""
         file_list_widget = self.ui.files_list
 
@@ -75,7 +75,7 @@ class MainWindow(QMainWindow):
             self, "Select Folder"
         ).replace("/", "\\")
 
-        self.ui.lineEdit_path.setText(download_folder)
+        self.ui.lineEdit_dir.setText(download_folder)
 
     def start_merge(self):
         """파일 병합 시작
@@ -86,9 +86,8 @@ class MainWindow(QMainWindow):
             NoFileError: 병합할 파일이 없는 경우 발생
         """
         file_list_widget = self.ui.files_list
-        file_format_cmbbox = self.ui.comboBox_format
 
-        download_dir = self.ui.lineEdit_path.text()
+        download_dir = self.ui.lineEdit_dir.text()
         file_name = self.ui.lineEdit_name.text()
 
         dir_pattern = r"^[a-zA-Z]:\\(?:[a-zA-Z0-9\s_@\-^!#$%&+={}\[\]]+\\)*[a-zA-Z0-9\s_@\-^!#$%&+={}]+\\?$"
@@ -100,7 +99,8 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
             raise FileNameError
 
-        file_format = file_format_cmbbox.currentText()
+        pdf_compression_yes = self.ui.radioButton_yes.isChecked()
+        pdf_compression_no = self.ui.radioButton_no.isChecked()
         files_list = [
             file_list_widget.item(i).text() for i in range(file_list_widget.count())
         ]
@@ -108,10 +108,7 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "파일 없음", "병합할 파일이 없습니다.")
             raise NoFileError
 
-        if file_format == "pdf":
-            utils.merge_to_pdf(files_list, download_dir, file_name, file_format)
-        else:
-            utils.merge_to_img(files_list, download_dir, file_name, file_format)
+        utils.merge_to_pdf(files_list, download_dir, file_name)
 
         QMessageBox.information(self, "파일 병합 완료", "파일 병합이 완료되었습니다.")
 
