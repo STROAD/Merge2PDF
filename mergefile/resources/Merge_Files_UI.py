@@ -313,7 +313,7 @@ class Ui_MainWindow(object):
         self.lineEdit_dir.setInputMask("")
         self.lineEdit_dir.setText(
             QCoreApplication.translate(
-                "MainWindow", f"{getenv('USERPROFILE')}\\\\Downloads", None
+                "MainWindow", f"{getenv('USERPROFILE')}\\Downloads", None
             )
         )
         self.toolButton_dir.setText(
