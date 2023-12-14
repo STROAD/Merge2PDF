@@ -68,7 +68,13 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression):
 
     save_name += ".pdf"
     if pdf_compression:
-        temp_pdf.ez_save(os.path.join(save_dir, save_name))
+        temp_pdf.save(
+            os.path.join(save_dir, save_name),
+            garbage=4,
+            deflate=True,
+            deflate_images=True,
+            deflate_fonts=True,
+        )
     else:
         temp_pdf.save(os.path.join(save_dir, save_name))
 
