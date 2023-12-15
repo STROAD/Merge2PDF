@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
         MainWindow.resize(420, 630)
         MainWindow.setMinimumSize(QSize(330, 470))
         icon = QIcon()
-        icon.addFile(":/icon/Merge_Files_Icon.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(":/icon/Merge2PDF_Icon.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.action_files = QAction(MainWindow)
         self.action_files.setObjectName("action_files")
@@ -265,7 +265,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(
-            QCoreApplication.translate("MainWindow", "Merge Files", None)
+            QCoreApplication.translate("MainWindow", "Merge to PDF", None)
         )
         self.action_files.setText(
             QCoreApplication.translate("MainWindow", "\ud30c\uc77c \ucd94\uac00", None)
