@@ -1,5 +1,5 @@
-# MergeFiles
-파일 병합 프로그램
+# Merge to PDF
+
 
 ## 빌드하기
 ### 리소스 파일 추가하기  
