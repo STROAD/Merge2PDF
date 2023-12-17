@@ -40,34 +40,12 @@ class Ui_MainWindow(object):
         self.action_close.setObjectName("action_close")
         self.action_help = QAction(MainWindow)
         self.action_help.setObjectName("action_help")
+        self.action_info = QAction(MainWindow)
+        self.action_info.setObjectName("action_info")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_2 = QGridLayout(self.centralwidget)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.Layout_1 = QHBoxLayout()
-        self.Layout_1.setObjectName("Layout_1")
-        self.Layout_1.setContentsMargins(10, -1, -1, -1)
-        self.label_filelist = QLabel(self.centralwidget)
-        self.label_filelist.setObjectName("label_filelist")
-
-        self.Layout_1.addWidget(self.label_filelist)
-
-        self.gridLayout_2.addLayout(self.Layout_1, 0, 0, 1, 1)
-
-        self.line_2 = QFrame(self.centralwidget)
-        self.line_2.setObjectName("line_2")
-        self.line_2.setFrameShape(QFrame.HLine)
-        self.line_2.setFrameShadow(QFrame.Sunken)
-
-        self.gridLayout_2.addWidget(self.line_2, 6, 0, 1, 1)
-
-        self.line_1 = QFrame(self.centralwidget)
-        self.line_1.setObjectName("line_1")
-        self.line_1.setFrameShape(QFrame.HLine)
-        self.line_1.setFrameShadow(QFrame.Sunken)
-
-        self.gridLayout_2.addWidget(self.line_1, 4, 0, 1, 1)
-
         self.group_saveoption = QGroupBox(self.centralwidget)
         self.group_saveoption.setObjectName("group_saveoption")
         self.group_saveoption.setFlat(False)
@@ -157,6 +135,61 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.group_saveoption, 5, 0, 1, 1)
 
+        self.Layout_8 = QHBoxLayout()
+        self.Layout_8.setSpacing(15)
+        self.Layout_8.setObjectName("Layout_8")
+        self.Layout_8.setContentsMargins(0, 5, 10, -1)
+        self.Spacer8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.Layout_8.addItem(self.Spacer8)
+
+        self.Button_start = QPushButton(self.centralwidget)
+        self.Button_start.setObjectName("Button_start")
+        self.Button_start.setMinimumSize(QSize(85, 30))
+
+        self.Layout_8.addWidget(self.Button_start)
+
+        self.Button_close = QPushButton(self.centralwidget)
+        self.Button_close.setObjectName("Button_close")
+        self.Button_close.setMinimumSize(QSize(85, 30))
+
+        self.Layout_8.addWidget(self.Button_close)
+
+        self.gridLayout_2.addLayout(self.Layout_8, 7, 0, 1, 1)
+
+        self.line_2 = QFrame(self.centralwidget)
+        self.line_2.setObjectName("line_2")
+        self.line_2.setFrameShape(QFrame.HLine)
+        self.line_2.setFrameShadow(QFrame.Sunken)
+
+        self.gridLayout_2.addWidget(self.line_2, 6, 0, 1, 1)
+
+        self.Layout_1 = QHBoxLayout()
+        self.Layout_1.setObjectName("Layout_1")
+        self.Layout_1.setContentsMargins(10, -1, -1, -1)
+        self.label_filelist = QLabel(self.centralwidget)
+        self.label_filelist.setObjectName("label_filelist")
+
+        self.Layout_1.addWidget(self.label_filelist)
+
+        self.gridLayout_2.addLayout(self.Layout_1, 0, 0, 1, 1)
+
+        self.line_1 = QFrame(self.centralwidget)
+        self.line_1.setObjectName("line_1")
+        self.line_1.setFrameShape(QFrame.HLine)
+        self.line_1.setFrameShadow(QFrame.Sunken)
+
+        self.gridLayout_2.addWidget(self.line_1, 4, 0, 1, 1)
+
+        self.Layout_2 = QGridLayout()
+        self.Layout_2.setObjectName("Layout_2")
+        self.files_list = QListWidget(self.centralwidget)
+        self.files_list.setObjectName("files_list")
+
+        self.Layout_2.addWidget(self.files_list, 1, 0, 1, 1)
+
+        self.gridLayout_2.addLayout(self.Layout_2, 2, 0, 1, 1)
+
         self.Layout_3 = QHBoxLayout()
         self.Layout_3.setSpacing(10)
         self.Layout_3.setObjectName("Layout_3")
@@ -184,37 +217,6 @@ class Ui_MainWindow(object):
         self.Layout_3.addWidget(self.Button_remove)
 
         self.gridLayout_2.addLayout(self.Layout_3, 3, 0, 1, 1)
-
-        self.Layout_2 = QGridLayout()
-        self.Layout_2.setObjectName("Layout_2")
-        self.files_list = QListWidget(self.centralwidget)
-        self.files_list.setObjectName("files_list")
-
-        self.Layout_2.addWidget(self.files_list, 1, 0, 1, 1)
-
-        self.gridLayout_2.addLayout(self.Layout_2, 2, 0, 1, 1)
-
-        self.Layout_8 = QHBoxLayout()
-        self.Layout_8.setSpacing(15)
-        self.Layout_8.setObjectName("Layout_8")
-        self.Layout_8.setContentsMargins(0, 5, 10, -1)
-        self.Spacer8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.Layout_8.addItem(self.Spacer8)
-
-        self.Button_start = QPushButton(self.centralwidget)
-        self.Button_start.setObjectName("Button_start")
-        self.Button_start.setMinimumSize(QSize(85, 30))
-
-        self.Layout_8.addWidget(self.Button_start)
-
-        self.Button_close = QPushButton(self.centralwidget)
-        self.Button_close.setObjectName("Button_close")
-        self.Button_close.setMinimumSize(QSize(85, 30))
-
-        self.Layout_8.addWidget(self.Button_close)
-
-        self.gridLayout_2.addLayout(self.Layout_8, 7, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -246,6 +248,8 @@ class Ui_MainWindow(object):
         self.menu_file.addSeparator()
         self.menu_file.addAction(self.action_close)
         self.menu_help.addAction(self.action_help)
+        self.menu_help.addSeparator()
+        self.menu_help.addAction(self.action_info)
 
         self.retranslateUi(MainWindow)
         self.Button_addfolder.clicked.connect(MainWindow.add_folder)
@@ -258,6 +262,7 @@ class Ui_MainWindow(object):
         self.action_folder.triggered.connect(MainWindow.add_folder)
         self.action_close.triggered.connect(MainWindow.close)
         # self.action_help.triggered.connect(MainWindow.open_help)
+        # self.action_info.triggered.connect(MainWindow.open_info)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -270,37 +275,31 @@ class Ui_MainWindow(object):
         self.action_files.setText(
             QCoreApplication.translate("MainWindow", "\ud30c\uc77c \ucd94\uac00", None)
         )
-        # if QT_CONFIG(shortcut)
         self.action_files.setShortcut(
             QCoreApplication.translate("MainWindow", "Ctrl+O", None)
         )
-        # endif // QT_CONFIG(shortcut)
         self.action_folder.setText(
             QCoreApplication.translate("MainWindow", "\ud3f4\ub354 \ucd94\uac00", None)
         )
-        # if QT_CONFIG(shortcut)
         self.action_folder.setShortcut(
             QCoreApplication.translate("MainWindow", "Ctrl+Shift+O", None)
         )
-        # endif // QT_CONFIG(shortcut)
         self.action_close.setText(
             QCoreApplication.translate("MainWindow", "\uc885\ub8cc", None)
         )
-        # if QT_CONFIG(shortcut)
         self.action_close.setShortcut(
             QCoreApplication.translate("MainWindow", "Ctrl+W", None)
         )
-        # endif // QT_CONFIG(shortcut)
         self.action_help.setText(
-            QCoreApplication.translate("MainWindow", "\ub3c4\uc6c0\ub9d0", None)
+            QCoreApplication.translate(
+                "MainWindow", "\ub3c4\uc6c0\ub9d0 \ud398\uc774\uc9c0 \uc5f4\uae30", None
+            )
         )
-        # if QT_CONFIG(shortcut)
         self.action_help.setShortcut(
             QCoreApplication.translate("MainWindow", "Ctrl+H", None)
         )
-        # endif // QT_CONFIG(shortcut)
-        self.label_filelist.setText(
-            QCoreApplication.translate("MainWindow", "\ud30c\uc77c \ubaa9\ub85d", None)
+        self.action_info.setText(
+            QCoreApplication.translate("MainWindow", "\uc815\ubcf4", None)
         )
         self.group_saveoption.setTitle(
             QCoreApplication.translate("MainWindow", "\uc800\uc7a5 \uc635\uc158", None)
@@ -331,6 +330,15 @@ class Ui_MainWindow(object):
         self.radioButton_yes.setText(
             QCoreApplication.translate("MainWindow", "\uc555\ucd95\ud558\uae30", None)
         )
+        self.Button_start.setText(
+            QCoreApplication.translate("MainWindow", "\ubcd1\ud569 \uc2dc\uc791", None)
+        )
+        self.Button_close.setText(
+            QCoreApplication.translate("MainWindow", "\ub2eb\uae30", None)
+        )
+        self.label_filelist.setText(
+            QCoreApplication.translate("MainWindow", "\ud30c\uc77c \ubaa9\ub85d", None)
+        )
         self.Button_addfolder.setText(
             QCoreApplication.translate("MainWindow", "\ud3f4\ub354 \ucd94\uac00", None)
         )
@@ -339,12 +347,6 @@ class Ui_MainWindow(object):
         )
         self.Button_remove.setText(
             QCoreApplication.translate("MainWindow", "\ud30c\uc77c \uc81c\uac70", None)
-        )
-        self.Button_start.setText(
-            QCoreApplication.translate("MainWindow", "\ubcd1\ud569 \uc2dc\uc791", None)
-        )
-        self.Button_close.setText(
-            QCoreApplication.translate("MainWindow", "\ub2eb\uae30", None)
         )
         self.menu_file.setTitle(
             QCoreApplication.translate("MainWindow", "\ud30c\uc77c", None)
