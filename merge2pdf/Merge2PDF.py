@@ -29,6 +29,14 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+    def open_info(self):
+        text = f"""<h3>Merge to PDF 정보</h3>
+<p>Merge to PDF</p>
+<p><a href="https://github.com/STROAD/Merge2PDF">Merge to PDF GitHub</a></p>
+<p>버전: {__version__}</p>"""
+
+        QMessageBox.about(self, "Merge to PDF", text)
+
     def add_folder(self):
         """선택 폴더 내 (file_filter에 존재하는 확장자를 가진)모든 파일을 files_list widget에 추가"""
         file_list_widget = self.ui.files_list

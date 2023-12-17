@@ -262,7 +262,7 @@ class Ui_MainWindow(object):
         self.action_folder.triggered.connect(MainWindow.add_folder)
         self.action_close.triggered.connect(MainWindow.close)
         # self.action_help.triggered.connect(MainWindow.open_help)
-        # self.action_info.triggered.connect(MainWindow.open_info)
+        self.action_info.triggered.connect(MainWindow.open_info)
 
         QMetaObject.connectSlotsByName(MainWindow)
 
