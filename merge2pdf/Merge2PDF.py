@@ -1,7 +1,7 @@
 import sys
 import os
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
-from resources.Merge2PDF_UI import Ui_MainWindow
+from Merge2PDF_UI import Ui_MainWindow
 import re
 import utils
 from __init__ import __version__
