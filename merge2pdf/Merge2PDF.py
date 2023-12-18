@@ -30,7 +30,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
     def open_help(self):
-        utils.open_html_file("..\\resources\\help.html")
+        utils.open_html_file("resources\\help.html")
 
     def open_info(self):
         text = f"""<h3>Merge to PDF 정보</h3>
