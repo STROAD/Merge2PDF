@@ -5,7 +5,7 @@ a = Analysis(
     ['Merge2PDF.py'],
     pathex=['.\\merge2pdf'],
     binaries=[],
-    datas=[('../resources/icon', 'resources'), ('../resources/help.html', 'resources')],
+    datas=[('../resources/icon', 'icon')],
     hiddenimports=['Merge2PDF_UI', 'utils', 'resources_rc'],
     hookspath=[],
     hooksconfig={},
