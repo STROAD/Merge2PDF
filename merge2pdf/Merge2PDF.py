@@ -30,7 +30,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
     def open_help(self):
-        utils.open_html_file("resources\\help.html")
+        os.startfile("https://stroad.github.io/Merge2PDF-help")
 
     def open_info(self):
         text = f"""<h3>Merge to PDF 정보</h3>
