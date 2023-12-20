@@ -89,7 +89,7 @@ class MainWindow(QMainWindow):
 
         download_folder = QFileDialog.getExistingDirectory(self, "Select Folder")
         if download_folder != "":
-            download_folder.replace("/", "\\")
+            download_folder = download_folder.replace("/", "\\")
 
             self.ui.lineEdit_dir.setText(download_folder)
 
