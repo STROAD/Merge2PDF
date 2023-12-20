@@ -277,7 +277,11 @@
     <item row="2" column="0">
      <layout class="QGridLayout" name="Layout_2">
       <item row="1" column="0">
-       <widget class="QListWidget" name="files_list"/>
+       <widget class="QListWidget" name="files_list">
+        <property name="selectionMode">
+         <enum>QAbstractItemView::ExtendedSelection</enum>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>

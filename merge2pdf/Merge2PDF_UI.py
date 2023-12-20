@@ -2,6 +2,7 @@ from os import getenv
 from PySide6.QtCore import QCoreApplication, QMetaObject, QRect, QSize
 from PySide6.QtGui import QAction, QIcon
 from PySide6.QtWidgets import (
+    QAbstractItemView,
     QFrame,
     QGridLayout,
     QGroupBox,
@@ -185,6 +186,7 @@ class Ui_MainWindow(object):
         self.Layout_2.setObjectName("Layout_2")
         self.files_list = QListWidget(self.centralwidget)
         self.files_list.setObjectName("files_list")
+        self.files_list.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
         self.Layout_2.addWidget(self.files_list, 1, 0, 1, 1)
 
