@@ -7,6 +7,28 @@ import fitz
 TEMP_PDF_NAME = "temp_pdf_file.pdf"
 
 
+def path_validity_check(path):
+    """경로 유효성 검사
+    path가 디렉터리인지, 절대경로인지, 접근 가능한지 확인
+    Args:
+        path (str): 유효성 검사를 할 경로
+
+    Returns:
+        bool
+
+    """
+    if not os.path.isdir(path):
+        return False
+
+    if not os.path.isabs(path):
+        return False
+
+    if not os.access(path, os.R_OK):
+        return False
+
+    return True
+
+
 def create_temp_pdf():
     """임시 PDF 파일 생성
     비어있는 새로운 페이지 1개가 있는 임시 PDF 파일 생성
