@@ -88,12 +88,11 @@ class MainWindow(QMainWindow):
     def select_folder(self):
         """병합 완료된 파일을 다운로드할 폴더 선택"""
 
-        download_folder = QFileDialog.getExistingDirectory(
-            self, "Select Folder"
-        ).replace("/", "\\")
-        print(download_folder)
+        download_folder = QFileDialog.getExistingDirectory(self, "Select Folder")
+        if download_folder != "":
+            download_folder.replace("/", "\\")
 
-        self.ui.lineEdit_dir.setText(download_folder)
+            self.ui.lineEdit_dir.setText(download_folder)
 
     def start_merge(self):
         """파일 병합 시작
