@@ -1,5 +1,5 @@
 import os
-import tempfile
+from tempfile import gettempdir
 import fitz
 from re import match
 
@@ -57,7 +57,7 @@ def create_temp_pdf():
         temp_pdf_path (str): 임시 PDF 파일 경로
 
     """
-    temp_dir = tempfile.gettempdir()
+    temp_dir = gettempdir()
     temp_pdf_path = os.path.join(temp_dir, TEMP_PDF_NAME)
 
     delete_temp_file(temp_pdf_path)
@@ -71,7 +71,7 @@ def create_temp_pdf():
     return temp_pdf_path
 
 
-def delete_temp_file(temp_file_path=os.path.join(tempfile.gettempdir(), TEMP_PDF_NAME)):
+def delete_temp_file(temp_file_path=os.path.join(gettempdir(), TEMP_PDF_NAME)):
     """임시 파일 삭제
     임의로 생성했던 임시 파일 삭제
 
