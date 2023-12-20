@@ -82,6 +82,8 @@ class MainWindow(QMainWindow):
         selected_indexes = file_list_widget.selectedIndexes()
 
         if selected_indexes:
+            selected_indexes.sort(reverse=True)
+
             for file in selected_indexes:
                 file_list_widget.takeItem(file.row())
 
