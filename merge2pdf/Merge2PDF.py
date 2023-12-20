@@ -41,7 +41,7 @@ class MainWindow(QMainWindow):
         QMessageBox.about(self, "Merge to PDF", text)
 
     def add_folder(self):
-        """선택 폴더 내 (file_filter에 존재하는 확장자를 가진)모든 파일을 files_list widget에 추가"""
+        """선택 폴더 내 특정 확장자를 가진 파일들의 [경로\파일명]을 files_list widget에 추가"""
         file_list_widget = self.ui.files_list
 
         folder = QFileDialog.getExistingDirectory(self, "Select Folder")
@@ -50,7 +50,6 @@ class MainWindow(QMainWindow):
         else:
             folder = folder.replace("/", "\\")
 
-        # folder에 존재하는 모든 파일 중 file_filter의 확장자를 가진 파일들만 파일 경로와 파일명을 같이 저장
         files_list = [
             "".join((folder, "\\", file))
             for file in os.listdir(folder)
