@@ -106,10 +106,10 @@ class MainWindow(QMainWindow):
         download_dir = self.ui.lineEdit_dir.text()
         file_name = self.ui.lineEdit_name.text()
 
-        if utils.is_valid_path(download_dir):
+        if not utils.is_valid_path(download_dir):
             QMessageBox.warning(self, "다운로드 위치 오류", "다운로드 위치가 잘못되었습니다.")
             raise DownloadDirError
-        elif utils.is_valid_file_name(file_name):
+        elif not utils.is_valid_file_name(file_name):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
             raise FileNameError
 
