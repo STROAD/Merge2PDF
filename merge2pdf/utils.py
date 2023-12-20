@@ -24,7 +24,7 @@ def is_valid_path(path):
     if not os.path.isabs(path):
         return False
 
-    if not os.access(path, os.R_OK):
+    if not os.access(path, os.R_OK) and os.access(path, os.W_OK):
         return False
 
     return True
