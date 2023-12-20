@@ -59,7 +59,7 @@ class MainWindow(QMainWindow):
 
     def add_files(self):
         """선택 파일을 files_list widget에 추가
-        (file_filter에 존재하는 확장자를 가진 파일만 선택 가능)
+        (특정 확장자를 가진 파일만 선택 가능)
         """
         file_list_widget = self.ui.files_list
 
