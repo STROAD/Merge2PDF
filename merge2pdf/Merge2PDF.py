@@ -79,8 +79,11 @@ class MainWindow(QMainWindow):
         """iles_list widget에서 선택한 파일 제거"""
         file_list_widget = self.ui.files_list
 
-        for file in file_list_widget.selectedIndexes():
-            file_list_widget.takeItem(file.row())
+        selected_indexes = file_list_widget.selectedIndexes()
+
+        if selected_indexes:
+            for file in selected_indexes:
+                file_list_widget.takeItem(file.row())
 
     def select_folder(self):
         """병합 완료된 파일을 다운로드할 폴더 선택"""
