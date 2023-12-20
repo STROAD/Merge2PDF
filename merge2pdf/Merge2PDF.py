@@ -45,17 +45,15 @@ class MainWindow(QMainWindow):
         file_list_widget = self.ui.files_list
 
         folder = QFileDialog.getExistingDirectory(self, "Select Folder")
-        if folder == "":
-            return
-        else:
+        if folder != "":
             folder = folder.replace("/", "\\")
 
-        files_list = [
-            "".join((folder, "\\", file))
-            for file in os.listdir(folder)
-            if file.endswith((".pdf", ".png", ".jpg", ".jpeg"))
-        ]
-        file_list_widget.addItems(files_list)
+            files_list = [
+                "".join((folder, "\\", file))
+                for file in os.listdir(folder)
+                if file.endswith((".pdf", ".png", ".jpg", ".jpeg"))
+            ]
+            file_list_widget.addItems(files_list)
 
     def add_files(self):
         """선택 파일을 files_list widget에 추가
@@ -93,6 +91,7 @@ class MainWindow(QMainWindow):
         download_folder = QFileDialog.getExistingDirectory(
             self, "Select Folder"
         ).replace("/", "\\")
+        print(download_folder)
 
         self.ui.lineEdit_dir.setText(download_folder)
 
