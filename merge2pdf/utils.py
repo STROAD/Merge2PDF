@@ -1,6 +1,7 @@
 import os
 import tempfile
 import fitz
+from re import match
 
 
 # constant
@@ -9,7 +10,7 @@ TEMP_PDF_NAME = "temp_pdf_file.pdf"
 
 def path_validity_check(path):
     """경로 유효성 검사
-    path가 디렉터리인지, 절대경로인지, 접근 가능한지 확인
+    입력받은 경로가 존재하는 디렉터리인지, 절대경로인지, 접근 가능한지 확인
     Args:
         path (str): 유효성 검사를 할 경로
 
@@ -27,6 +28,25 @@ def path_validity_check(path):
         return False
 
     return True
+
+
+def file_name_check(file_name):
+    """파일 이름 유효성 검사
+    입력받은 파일 이름이 윈도우 상에서 유효한 파일 이름인지 확인
+
+    Args:
+        file_name (str): 유효성 검사를 할 파일 이름
+
+    Returns:
+        bool
+
+    """
+    name_pattern = r'^[^<>:"/\\|?*\x00-\x1F.]+$'
+
+    if match(name_pattern, file_name):
+        return True
+    else:
+        return False
 
 
 def create_temp_pdf():
