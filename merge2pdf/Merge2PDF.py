@@ -69,10 +69,11 @@ class MainWindow(QMainWindow):
             filter="사용자 지정 파일 (*.png *.jpg *.jpeg *.pdf)",
         )[0]
 
-        for i in range(len(files)):
-            files[i] = files[i].replace("/", "\\")
+        if files:
+            for i in range(len(files)):
+                files[i] = files[i].replace("/", "\\")
 
-        file_list_widget.addItems(files)
+            file_list_widget.addItems(files)
 
     def remove_files(self):
         """iles_list widget에서 선택한 파일 제거"""
