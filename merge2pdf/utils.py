@@ -8,7 +8,7 @@ from re import match
 TEMP_PDF_NAME = "temp_pdf_file.pdf"
 
 
-def path_validity_check(path):
+def is_valid_path(path):
     """경로 유효성 검사
     입력받은 경로가 존재하는 디렉터리인지, 절대경로인지, 접근 가능한지 확인
     Args:
@@ -30,7 +30,7 @@ def path_validity_check(path):
     return True
 
 
-def file_name_check(file_name):
+def is_valid_file_name(file_name):
     """파일 이름 유효성 검사
     입력받은 파일 이름이 윈도우 상에서 유효한 파일 이름인지 확인
 
