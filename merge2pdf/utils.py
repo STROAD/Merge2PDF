@@ -83,7 +83,7 @@ def delete_temp_file(temp_file_path=os.path.join(gettempdir(), TEMP_PDF_NAME)):
         os.remove(temp_file_path)
 
 
-def merge_to_pdf(files_list, save_dir, save_name, pdf_compression):
+def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progress):
     """PDF로 병합
 
     Args:
@@ -91,12 +91,21 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression):
         save_dir (str): 병합된 파일을 저장할 경로
         save_name (str): 병합된 파일을 저장할 이름
         pdf_compression (str): PDF 압축 저장 여부
+        length (str): files_list의 길이
+        progress: Progress Dialog
 
     """
     temp_pdf_path = create_temp_pdf()
+    progress.setValue(0)
 
     temp_pdf = fitz.open(temp_pdf_path)
-    for file in files_list:
+    progress.setValue(1)
+
+    for i, file in enumerate(files_list):
+        if progress.wasCanceled():
+            doc.close()
+            break
+
         doc = fitz.open(file)
 
         if file.endswith(".pdf"):
@@ -106,7 +115,10 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression):
 
         doc.close()
 
+        progress.setValue(i + 2)
+
     temp_pdf.delete_page(0)
+    progress.setValue(length + 2)
 
     save_name += ".pdf"
     if pdf_compression:
@@ -119,7 +131,9 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression):
         )
     else:
         temp_pdf.save(os.path.join(save_dir, save_name))
+    progress.setValue(length + 3)
 
     temp_pdf.close()
+    progress.setValue(length + 4)
 
     delete_temp_file(temp_pdf_path)
