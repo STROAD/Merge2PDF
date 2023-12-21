@@ -79,7 +79,7 @@ def delete_temp_file(temp_file_path=os.path.join(gettempdir(), TEMP_PDF_NAME)):
         temp_file_path (str): 삭제할 임시 파일의 경로
 
     """
-    if os.path.exists(temp_file_path):
+    if os.path.isfile(temp_file_path):
         os.remove(temp_file_path)
 
 
