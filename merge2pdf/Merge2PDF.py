@@ -1,5 +1,6 @@
 import sys
 import os
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -127,7 +128,19 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "파일 없음", "병합할 파일이 없습니다.")
             raise NoFileError
 
-        utils.merge_to_pdf(files_list, download_dir, file_name, pdf_compression)
+        progress = QProgressDialog("파일 병합중...", "중단", 0, len(files_list) + 4, self)
+        progress.setWindowTitle("Merge to PDF")
+        progress.setWindowModality(Qt.WindowModal)
+        progress.setMinimumDuration(0)
+
+        utils.merge_to_pdf(
+            files_list,
+            download_dir,
+            file_name,
+            pdf_compression,
+            len(files_list),
+            progress,
+        )
 
         QMessageBox.information(self, "파일 병합 완료", "파일 병합이 완료되었습니다.")
 
