@@ -49,6 +49,19 @@ def is_valid_file_name(file_name):
         return False
 
 
+def is_file_name_duplicate(path, file_name):
+    """파일 이름 중복 검사
+    입력받은 주소에 입력받은 파일 이름과 동일한 이름의 파일이 있는지 확인
+
+    Args:
+        path (str): 파일 이름 중복 검사를 할 파일의 경로
+        file_name (str): 파일 이름 중복 검사를 할 파일 이름
+
+    Returns:
+        bool
+    """
+
+
 def create_temp_pdf():
     """임시 PDF 파일 생성
     비어있는 새로운 페이지 1개가 있는 임시 PDF 파일 생성
