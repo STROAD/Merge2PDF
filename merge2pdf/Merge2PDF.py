@@ -138,7 +138,8 @@ class MainWindow(QMainWindow):
         progress = QProgressDialog("파일 병합중...", "중단", 0, len(files_list) + 4, self)
         progress.setWindowTitle("Merge to PDF")
         progress.setWindowModality(Qt.WindowModal)
-        progress.setMinimumDuration(0)
+        progress.setCancelButton(None)
+        progress.setMinimumDuration(10)
 
         utils.merge_to_pdf(
             files_list,
