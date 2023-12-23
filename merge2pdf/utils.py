@@ -59,7 +59,14 @@ def is_file_name_duplicate(path, file_name):
 
     Returns:
         bool
+
     """
+    file_name += ".pdf"
+
+    if os.path.exists(os.path.join(path, file_name)):
+        return True
+    else:
+        return False
 
 
 def create_temp_pdf():
