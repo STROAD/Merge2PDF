@@ -120,8 +120,12 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
             raise FileNameError
         elif utils.is_file_name_duplicate(download_dir, file_name):
-            QMessageBox.warning(self, "파일 이름 오류", "동일한 이름의 파일이 존재합니다.")
-            raise FileNameError
+            reply = QMessageBox.question(
+                self, "파일 이름 중복", "동일한 이름의 파일이 존재합니다. 덮어 씌우겠습니까?"
+            )
+
+            if reply == QMessageBox.StandardButton.No:
+                raise FileNameError
 
         pdf_compression = self.ui.radioButton_yes.isChecked()
         files_list = [
