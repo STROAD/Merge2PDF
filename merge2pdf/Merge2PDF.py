@@ -139,7 +139,7 @@ class MainWindow(QMainWindow):
         progress.setWindowTitle("Merge to PDF")
         progress.setWindowModality(Qt.WindowModal)
         progress.setCancelButton(None)
-        progress.setMinimumDuration(10)
+        progress.setMinimumDuration(500)
 
         utils.merge_to_pdf(
             files_list,
