@@ -40,6 +40,23 @@ def test_is_valid_name():
         assert utils.is_valid_name(name) is expected_result
 
 
+def test_is_file_name_duplicate():
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "resources")
+    test_cases = [
+        ("0", True),
+        ("1", True),
+        ("19", True),
+        ("a", False),
+        ("abc", False),
+        ("abc123", False),
+        ("name_0", False),
+        ("pdf.pdf", False),
+    ]
+
+    for name, expected_result in test_cases:
+        assert utils.is_file_name_duplicate(path, name) is expected_result
+
+
 def test_create_temp_pdf():
     temp_pdf_path = utils.create_temp_pdf()
 
