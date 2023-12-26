@@ -1,8 +1,6 @@
 import sys
 import os
-from tempfile import gettempdir
-import fitz
-from re import match
+from unittest.mock import Mock
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from merge2pdf import utils
@@ -64,3 +62,24 @@ def test_delete_temp_file(tmpdir):
 
     assert os.path.isfile(non_existing_file_path) == False
     utils.delete_temp_file(non_existing_file_path)
+
+
+def test_merge_to_pdf(tmpdir):
+    resources_dir = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "resources"
+    )
+    files_list = [os.path.join(resources_dir, f"{i}.pdf") for i in range(20)]
+    print(files_list)
+    save_dir = str(tmpdir.mkdir("output"))
+    save_name = "merged"
+    pdf_compression = False
+    length = len(files_list)
+
+    progress = Mock()
+
+    utils.merge_to_pdf(
+        files_list, save_dir, save_name, pdf_compression, length, progress
+    )
+
+    merged_file = os.path.join(save_dir, save_name + ".pdf")
+    assert os.path.isfile(merged_file)
