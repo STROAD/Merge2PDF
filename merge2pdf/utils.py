@@ -33,12 +33,12 @@ def is_valid_path(path):
     return True
 
 
-def is_valid_file_name(file_name):
-    """파일 이름 유효성 검사
-    입력받은 파일 이름이 윈도우 상에서 유효한 파일 이름인지 확인
+def is_valid_name(name):
+    """이름 유효성 검사
+    입력받은 (파일)이름이 윈도우 상에서 유효한 (파일)이름인지 확인
 
     Args:
-        file_name (str): 유효성 검사를 할 파일 이름
+        name (str): 유효성 검사를 할 (파일)이름
 
     Returns:
         bool
@@ -46,7 +46,7 @@ def is_valid_file_name(file_name):
     """
     name_pattern = r'^[^<>:"/\\|?*\x00-\x1F.]+$'
 
-    if match(name_pattern, file_name):
+    if match(name_pattern, name):
         return True
     else:
         return False
