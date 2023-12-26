@@ -18,6 +18,9 @@ def is_valid_path(path):
         bool
 
     """
+    if path is None or not isinstance(path, str):
+        return False
+
     if not os.path.isdir(path):
         return False
 
