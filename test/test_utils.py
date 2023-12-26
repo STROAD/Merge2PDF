@@ -1,5 +1,6 @@
 import sys
 import os
+import pytest
 from unittest.mock import Mock
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
@@ -64,15 +65,14 @@ def test_delete_temp_file(tmpdir):
     utils.delete_temp_file(non_existing_file_path)
 
 
-def test_merge_to_pdf(tmpdir):
+@pytest.mark.parametrize("pdf_compression", [False, True])
+def test_merge_to_pdf(tmpdir, pdf_compression):
     resources_dir = os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "resources"
     )
     files_list = [os.path.join(resources_dir, f"{i}.pdf") for i in range(20)]
-    print(files_list)
     save_dir = str(tmpdir.mkdir("output"))
     save_name = "merged"
-    pdf_compression = False
     length = len(files_list)
 
     progress = Mock()
