@@ -100,7 +100,7 @@ class MainWindow(QMainWindow):
         if download_folder != "":
             download_folder = download_folder.replace("/", "\\")
 
-            self.ui.lineEdit_dir.setText(download_folder)
+            self.ui.lineEdit_path.setText(download_folder)
 
     def start_merge(self):
         """파일 병합 시작
@@ -112,16 +112,16 @@ class MainWindow(QMainWindow):
         """
         file_list_widget = self.ui.files_list
 
-        download_dir = self.ui.lineEdit_dir.text()
+        download_path = self.ui.lineEdit_path.text()
         file_name = self.ui.lineEdit_name.text()
 
-        if not utils.is_valid_path(download_dir):
+        if not utils.is_valid_path(download_path):
             QMessageBox.warning(self, "다운로드 위치 오류", "다운로드 위치가 잘못되었습니다.")
-            raise PathError(download_dir)
+            raise PathError(download_path)
         elif not utils.is_valid_name(file_name):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
             raise FileNameError
-        elif utils.is_file_name_duplicate(download_dir, file_name):
+        elif utils.is_file_name_duplicate(download_path, file_name):
             reply = QMessageBox.question(
                 self, "파일 이름 중복", "동일한 이름의 파일이 존재합니다. 덮어 씌우겠습니까?"
             )
@@ -146,7 +146,7 @@ class MainWindow(QMainWindow):
 
         utils.merge_to_pdf(
             files_list,
-            download_dir,
+            download_path,
             file_name,
             pdf_compression,
             len(files_list),

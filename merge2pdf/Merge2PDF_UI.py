@@ -58,28 +58,28 @@ class Ui_MainWindow(object):
         self.Layout_5 = QHBoxLayout()
         self.Layout_5.setObjectName("Layout_5")
         self.Layout_5.setContentsMargins(-1, 5, -1, -1)
-        self.label_dir = QLabel(self.group_saveoption)
-        self.label_dir.setObjectName("label_dir")
+        self.label_path = QLabel(self.group_saveoption)
+        self.label_path.setObjectName("label_path")
         sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_dir.sizePolicy().hasHeightForWidth())
-        self.label_dir.setSizePolicy(sizePolicy)
-        self.label_dir.setMinimumSize(QSize(81, 0))
+        sizePolicy.setHeightForWidth(self.label_path.sizePolicy().hasHeightForWidth())
+        self.label_path.setSizePolicy(sizePolicy)
+        self.label_path.setMinimumSize(QSize(81, 0))
 
-        self.Layout_5.addWidget(self.label_dir)
+        self.Layout_5.addWidget(self.label_path)
 
-        self.lineEdit_dir = QLineEdit(self.group_saveoption)
-        self.lineEdit_dir.setObjectName("lineEdit_dir")
-        self.lineEdit_dir.setMinimumSize(QSize(0, 20))
+        self.lineEdit_path = QLineEdit(self.group_saveoption)
+        self.lineEdit_path.setObjectName("lineEdit_path")
+        self.lineEdit_path.setMinimumSize(QSize(0, 20))
 
-        self.Layout_5.addWidget(self.lineEdit_dir)
+        self.Layout_5.addWidget(self.lineEdit_path)
 
-        self.toolButton_dir = QToolButton(self.group_saveoption)
-        self.toolButton_dir.setObjectName("toolButton_dir")
-        self.toolButton_dir.setMinimumSize(QSize(25, 20))
+        self.toolButton_path = QToolButton(self.group_saveoption)
+        self.toolButton_path.setObjectName("toolButton_path")
+        self.toolButton_path.setMinimumSize(QSize(25, 20))
 
-        self.Layout_5.addWidget(self.toolButton_dir)
+        self.Layout_5.addWidget(self.toolButton_path)
 
         self.Layout_4.addLayout(self.Layout_5)
 
@@ -235,9 +235,9 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.Button_addfolder, self.Button_addfiles)
         QWidget.setTabOrder(self.Button_addfiles, self.files_list)
         QWidget.setTabOrder(self.files_list, self.Button_remove)
-        QWidget.setTabOrder(self.Button_remove, self.toolButton_dir)
-        QWidget.setTabOrder(self.toolButton_dir, self.lineEdit_dir)
-        QWidget.setTabOrder(self.lineEdit_dir, self.lineEdit_name)
+        QWidget.setTabOrder(self.Button_remove, self.toolButton_path)
+        QWidget.setTabOrder(self.toolButton_path, self.lineEdit_path)
+        QWidget.setTabOrder(self.lineEdit_path, self.lineEdit_name)
         QWidget.setTabOrder(self.lineEdit_name, self.radioButton_no)
         QWidget.setTabOrder(self.radioButton_no, self.radioButton_yes)
         QWidget.setTabOrder(self.radioButton_yes, self.Button_start)
@@ -257,7 +257,7 @@ class Ui_MainWindow(object):
         self.Button_addfolder.clicked.connect(MainWindow.add_folder)
         self.Button_addfiles.clicked.connect(MainWindow.add_files)
         self.Button_remove.clicked.connect(MainWindow.remove_files)
-        self.toolButton_dir.clicked.connect(MainWindow.select_folder)
+        self.toolButton_path.clicked.connect(MainWindow.select_folder)
         self.Button_start.clicked.connect(MainWindow.start_merge)
         self.Button_close.clicked.connect(MainWindow.close)
         self.action_files.triggered.connect(MainWindow.add_files)
@@ -306,18 +306,18 @@ class Ui_MainWindow(object):
         self.group_saveoption.setTitle(
             QCoreApplication.translate("MainWindow", "\uc800\uc7a5 \uc635\uc158", None)
         )
-        self.label_dir.setText(
+        self.label_path.setText(
             QCoreApplication.translate(
                 "MainWindow", "\ub2e4\uc6b4\ub85c\ub4dc \uc704\uce58", None
             )
         )
-        self.lineEdit_dir.setInputMask("")
-        self.lineEdit_dir.setText(
+        self.lineEdit_path.setInputMask("")
+        self.lineEdit_path.setText(
             QCoreApplication.translate(
                 "MainWindow", f"{getenv('USERPROFILE')}\\Downloads", None
             )
         )
-        self.toolButton_dir.setText(
+        self.toolButton_path.setText(
             QCoreApplication.translate("MainWindow", "...", None)
         )
         self.label_name.setText(
