@@ -30,22 +30,29 @@ Merge2PDF.py 실행
 ## 프로젝트 구조
 ```
 📦 Merge2PDF
-├─ 📜 .gitignore
-├─ 📜 LICENSE
 ├─ 📜 README.md
 ├─ 📜 README_Dev.md
+├─ 📜 .gitignore
+├─ 📜 LICENSE
 ├─ 📁 merge2pdf
 │   ├─ 📜 __init__.py
 │   ├─ 📜 Merge2PDF.py
 │   ├─ 📜 Merge2PDF_UI.py
-│   └─ 📜 utils.py
+│   ├─ 📜 utils.py
+│   ├─ 📜 custom_errors.py
 │   ├─ 📜 resources_rc.py
-│   ├─ 📜 Merge2PDF.spec
-└─ 📁 resources
-    ├─ 📜 Merge2PDF_ui.ui
-    ├─ 📜 resources_rc.qrc
-    └─ 📁 icon
-        └─ 📜 Merge2PDF_Icon.ico
+│   └─ 📜 Merge2PDF.spec
+├─ 📁 resources
+│   ├─ 📜 Merge2PDF_ui.ui
+│   ├─ 📜 resources_rc.qrc
+│   └─ 📁 icon
+│       └─ 📜 Merge2PDF_Icon.ico
+└─ 📁 test
+    ├─ 📜 test_utils.py
+    └─ 📁 resources
+        ├─ 📜 0.pdf
+        ├─    ...
+        └─ 📜 19.pdf
 ```
 
 
