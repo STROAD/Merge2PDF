@@ -100,3 +100,7 @@ def test_merge_to_pdf(tmpdir, pdf_compression):
 
     merged_file = os.path.join(save_dir, save_name + ".pdf")
     assert os.path.isfile(merged_file)
+
+    files_list.append("non_existing_file.pdf")
+    merged_file = os.path.join(save_dir, save_name + ".pdf")
+    assert os.path.isfile(merged_file)
