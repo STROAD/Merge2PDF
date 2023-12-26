@@ -125,10 +125,6 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progr
     progress.setValue(1)
 
     for i, file in enumerate(files_list):
-        if progress.wasCanceled():
-            doc.close()
-            break
-
         doc = fitz.open(file)
 
         if file.endswith(".pdf"):
