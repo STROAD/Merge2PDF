@@ -17,6 +17,12 @@ class FileNameError(Exception):
 
 
 class NoFileError(Exception):
-    def __init__(self, path):
-        self.path = path
-        super().__init__(f"유효하지 않은 경로입니다: '{path}'")
+    def __init__(self, file=None):
+        self.file = file
+
+        if file is None:
+            self.message = "병합할 파일이 존재하지 않습니다"
+        else:
+            self.message = f"파일을 찾을 수 없습니다: '{file}'"
+
+        super().__init__(self.message)
