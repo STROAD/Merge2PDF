@@ -4,7 +4,8 @@ Merge to PDF 개발과 관련된 내용입니다.
 
 Merge to PDF는 Windows 11에서 개발되고 테스트 되었습니다.  
 [Python](https://www.python.org/) [3.12.1](https://www.python.org/downloads/release/python-3121) 버전을 사용하며, [PySide6](https://pypi.org/project/PySide6), [PyMuPDF](https://github.com/pymupdf/PyMuPDF) 라이브러리를 사용합니다.  
-코드 포맷터로 [Black](https://github.com/psf/black)을 사용합니다.
+코드 포맷터로 [Black](https://github.com/psf/black)을 사용합니다.  
+테스트에는 [pytest](https://github.com/pytest-dev/pytest)를 사용합니다.
 
 
 ## 설치 및 실행
@@ -21,6 +22,7 @@ PySide6, PyMuPDF 설치
 pip install black
 pip install PySide6
 pip install PyMuPDF
+pip install pytest
 ```
 
 4. Merge to PDF 실행  
@@ -77,3 +79,7 @@ exe 빌드를 위한 라이브러리 설치
 ```shell
 pyinstaller --clean .\merge2pdf\Merge2PDF.spec
 ```
+
+
+## 테스트
+프로젝트 최상위 폴더(Merge2PDF\\)에서 `pytest` 명령어 실행
