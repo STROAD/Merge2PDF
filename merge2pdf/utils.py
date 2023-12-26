@@ -124,6 +124,7 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progr
     temp_pdf = fitz.open(temp_pdf_path)
     progress.setValue(1)
 
+    # 파일 병합
     for i, file in enumerate(files_list):
         doc = fitz.open(file)
 
@@ -136,9 +137,11 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progr
 
         progress.setValue(i + 2)
 
+    # create_temp_pdf()에서 임의로 생성한 빈 페이지 삭제
     temp_pdf.delete_page(0)
     progress.setValue(length + 2)
 
+    # 파일 저장
     save_name += ".pdf"
     if pdf_compression:
         temp_pdf.save(

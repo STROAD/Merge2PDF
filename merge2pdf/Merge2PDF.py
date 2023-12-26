@@ -127,6 +127,7 @@ class MainWindow(QMainWindow):
             if reply == QMessageBox.StandardButton.No:
                 raise FileNameError
 
+        # pdf_compression: True -> 압축 O, False -> 압축 X
         pdf_compression = self.ui.radioButton_yes.isChecked()
         files_list = [
             file_list_widget.item(i).text() for i in range(file_list_widget.count())
