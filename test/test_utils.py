@@ -21,3 +21,5 @@ def test_is_valid_path():
     assert utils.is_valid_path("") is False
 
     assert utils.is_valid_path(None) is False
+
+    assert utils.is_valid_path(0) is False
