@@ -2,7 +2,6 @@ import os
 from tempfile import gettempdir
 import fitz
 from re import match
-from custom_errors import NoFileError
 
 
 # constant
@@ -129,8 +128,8 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progr
     for i, file in enumerate(files_list):
         try:
             if not os.path.exists(file):
-                raise NoFileError
-        except NoFileError:
+                raise FileNotFoundError
+        except FileNotFoundError:
             continue
 
         doc = fitz.open(file)
