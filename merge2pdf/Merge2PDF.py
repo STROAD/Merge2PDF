@@ -13,7 +13,7 @@ import utils
 from __init__ import __version__
 
 
-class DownloadDirError(Exception):
+class DownloadPathError(Exception):
     pass
 
 
@@ -104,7 +104,7 @@ class MainWindow(QMainWindow):
         """파일 병합 시작
 
         Raises:
-            DownloadDirError: 파일 경로가 올바르지 않은 경우 발생
+            DownloadPathError: 파일 경로가 올바르지 않은 경우 발생
             FileNameError: 파일 이름이 올바르지 않은 경우 발생
             NoFileError: 병합할 파일이 없는 경우 발생
         """
@@ -115,7 +115,7 @@ class MainWindow(QMainWindow):
 
         if not utils.is_valid_path(download_dir):
             QMessageBox.warning(self, "다운로드 위치 오류", "다운로드 위치가 잘못되었습니다.")
-            raise DownloadDirError
+            raise DownloadPathError
         elif not utils.is_valid_name(file_name):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
             raise FileNameError
