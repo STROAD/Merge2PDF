@@ -14,7 +14,9 @@ from __init__ import __version__
 
 
 class PathError(Exception):
-    pass
+    def __init__(self, path):
+        self.path = path
+        super().__init__(f"유효하지 않은 경로입니다: '{path}'")
 
 
 class FileNameError(Exception):
@@ -115,7 +117,7 @@ class MainWindow(QMainWindow):
 
         if not utils.is_valid_path(download_dir):
             QMessageBox.warning(self, "다운로드 위치 오류", "다운로드 위치가 잘못되었습니다.")
-            raise PathError
+            raise PathError(download_dir)
         elif not utils.is_valid_name(file_name):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
             raise FileNameError
