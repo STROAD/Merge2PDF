@@ -14,10 +14,6 @@ from custom_errors import *
 from __init__ import __version__
 
 
-def close():
-    QMainWindow.close()
-
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
