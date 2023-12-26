@@ -38,4 +38,29 @@ def test_is_valid_name():
     ]
 
     for name, expected_result in test_cases:
-        assert utils.is_valid_name(name) == expected_result
+        assert utils.is_valid_name(name) is expected_result
+
+
+def test_create_temp_pdf():
+    temp_pdf_path = utils.create_temp_pdf()
+
+    assert os.path.exists(temp_pdf_path) is True
+
+    assert temp_pdf_path.endswith(".pdf") is True
+
+    utils.delete_temp_file()
+    assert os.path.exists(temp_pdf_path) is False
+
+
+def test_delete_temp_file(tmpdir):
+    existing_file_path = str(tmpdir.join("existing_file.txt"))
+    open(existing_file_path, "w").close()
+
+    assert os.path.isfile(existing_file_path) == True
+    utils.delete_temp_file(existing_file_path)
+    assert os.path.isfile(existing_file_path) == False
+
+    non_existing_file_path = str(tmpdir.join("non_existing_file.txt"))
+
+    assert os.path.isfile(non_existing_file_path) == False
+    utils.delete_temp_file(non_existing_file_path)
