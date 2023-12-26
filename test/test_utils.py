@@ -54,13 +54,13 @@ def test_delete_temp_file(tmpdir):
     existing_file_path = str(tmpdir.join("existing_file.txt"))
     open(existing_file_path, "w").close()
 
-    assert os.path.isfile(existing_file_path) == True
+    assert os.path.isfile(existing_file_path) is True
     utils.delete_temp_file(existing_file_path)
-    assert os.path.isfile(existing_file_path) == False
+    assert os.path.isfile(existing_file_path) is False
 
     non_existing_file_path = str(tmpdir.join("non_existing_file.txt"))
 
-    assert os.path.isfile(non_existing_file_path) == False
+    assert os.path.isfile(non_existing_file_path) is False
     utils.delete_temp_file(non_existing_file_path)
 
 
