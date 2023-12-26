@@ -20,7 +20,15 @@ class PathError(Exception):
 
 
 class FileNameError(Exception):
-    pass
+    def __init__(self, name, type):
+        self.name = name
+
+        if type == "invalid":
+            self.message = f"유효하지 않은 이름입니다: '{name}'"
+        if type == "duplicate":
+            self.message = f"동일한 이름의 파일이 존재합니다: '{name}'"
+
+        super().__init__(self.message)
 
 
 class NoFileError(Exception):
@@ -120,14 +128,15 @@ class MainWindow(QMainWindow):
             raise PathError(download_path)
         elif not utils.is_valid_name(file_name):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
-            raise FileNameError
+            raise FileNameError(file_name, "invalid")
         elif utils.is_file_name_duplicate(download_path, file_name):
             reply = QMessageBox.question(
                 self, "파일 이름 중복", "동일한 이름의 파일이 존재합니다. 덮어 씌우겠습니까?"
             )
 
             if reply == QMessageBox.StandardButton.No:
-                raise FileNameError
+                file_name += ".pdf"
+                raise FileNameError(file_name, "duplicate")
 
         # pdf_compression: True -> 압축 O, False -> 압축 X
         pdf_compression = self.ui.radioButton_yes.isChecked()
