@@ -1,23 +1,22 @@
 # Merge to PDF
+Content related to the development of **Merge to PDF**.
 
-Merge to PDF 개발과 관련된 내용입니다.
-
-Merge to PDF는 Windows 11에서 개발되고 테스트 되었습니다.  
-[Python](https://www.python.org/) [3.12.1](https://www.python.org/downloads/release/python-3121) 버전을 사용하며, [PySide6](https://pypi.org/project/PySide6), [PyMuPDF](https://github.com/pymupdf/PyMuPDF) 라이브러리를 사용합니다.  
-코드 포맷터로 [Black](https://github.com/psf/black)을 사용합니다.  
-테스트에는 [pytest](https://github.com/pytest-dev/pytest)를 사용합니다.
+**Merge to PDF** was developed and tested using [Python](https://www.python.org) [3.12.1](https://www.python.org/downloads/release/python-3121) on Windows 11.  
+It uses the [PySide6](https://pypi.org/project/PySide6), [PyMuPDF](https://github.com/pymupdf/PyMuPDF) libraries.  
+It uses [Black](https://github.com/psf/black) as a code formatter.  
+It uses [pytest](https://github.com/pytest-dev/pytest) for testing.
 
 
-## 설치 및 실행
-1. Python 설치  
-Python 3.12.1 설치  
-(3.12.1 이외의 버전에서는 정상작동 보장 불가)
+## Installation & Usage
+1. Installing Python  
+Installing Python 3.12.1  
+(Not guaranteed to work on versions other than 3.12.1)
 
 2. Repository clone  
 `git clone https://github.com/STROAD/Merge2PDF.git`
 
-3. 라이브러리 설치  
-PySide6, PyMuPDF 설치
+3. Installing Libraries  
+Install PySide6, PyMuPDF
 ```shell
 pip install black
 pip install PySide6
@@ -25,11 +24,11 @@ pip install PyMuPDF
 pip install pytest
 ```
 
-4. Merge to PDF 실행  
-Merge2PDF.py 실행
+4. Running Merge to PDF  
+Run Merge2PDF.py
 
 
-## 프로젝트 구조
+## Project Structure
 ```
 📦 Merge2PDF
 ├─ 📜 README.md
@@ -58,28 +57,27 @@ Merge2PDF.py 실행
 ```
 
 
-## PySide6 기본 사용법
-Qt Designer 위치: `venv\Lib\site-packages\PySide6\designer.exe`
+## Basic PySide6 Usage
+Qt Designer location: `venv\Lib\site-packages\PySide6\designer.exe`
 
-Python 코드 보기가 안될 경우: `venv\Lib\site-packages\PySide6\`에서 `uic.exe`복사 후 `bin\`에 붙여넣기
+If View Python Code doesn't work: Copy `uic.exe` from `venv\Lib\site-packages\PySide6\` and paste into `bin\`
 
-### 리소스 파일 추가
-
-리소스 파일(아이콘, 이미지 등)들을 resources_rc.qrc 파일에 경로를 지정해주고 아래 명령어를 통해 resources_rc.py 파일로 변환
+### Adding resource files
+Path your resource files (icons, images, etc.) to the `resources_rc.qrc` file and convert them to the `resources_rc.py` file with the following command
 ```shell
 pyside6-rcc resources_rc.qrc -o resources_rc.py
 ```
 
 
-## exe 빌드하기
-exe 빌드를 위한 라이브러리 설치  
+## To Build an EXE
+Installing libraries to build EXE  
 `pip install pyinstaller`
 
-아래 명령어를 통해 exe 빌드(프로젝트 최상위 폴더(Merge2PDF\\)에서 빌드)
+Build the exe with the command below (build from the project top-level folder (Merge2PDF\\))
 ```shell
 pyinstaller --clean .\merge2pdf\Merge2PDF.spec
 ```
 
 
-## 테스트
-프로젝트 최상위 폴더(Merge2PDF\\)에서 `pytest` 명령어 실행
+## Test
+Run the `pytest` command in the top-level folder of your project (Merge2PDF\\)
