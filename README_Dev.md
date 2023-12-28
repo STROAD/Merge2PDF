@@ -58,9 +58,9 @@ Run Merge2PDF.py
 
 
 ## Basic PySide6 Usage
-Qt Designer location: `venv\Lib\site-packages\PySide6\designer.exe`
+Qt Designer location: `venv/Lib/site-packages/PySide6/designer.exe`
 
-If View Python Code doesn't work: Copy `uic.exe` from `venv\Lib\site-packages\PySide6\` and paste into `bin\`
+If View Python Code doesn't work: Copy `uic.exe` from `venv/Lib/site-packages/PySide6/` and paste into `bin/`
 
 ### Adding resource files
 Path your resource files (icons, images, etc.) to the `resources_rc.qrc` file and convert them to the `resources_rc.py` file with the following command
@@ -73,11 +73,11 @@ pyside6-rcc resources_rc.qrc -o resources_rc.py
 Installing libraries to build EXE  
 `pip install pyinstaller`
 
-Build the exe with the command below (build from the project top-level folder (Merge2PDF\\))
+Build the exe with the command below (build from the project top-level folder (`Merge2PDF/`))
 ```shell
-pyinstaller --clean .\merge2pdf\Merge2PDF.spec
+pyinstaller --clean ./merge2pdf/Merge2PDF.spec
 ```
 
 
 ## Test
-Run the `pytest` command in the top-level folder of your project (Merge2PDF\\)
+Run the `pytest` command in the top-level folder of your project (`Merge2PDF/`)
