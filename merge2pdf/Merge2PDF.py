@@ -128,7 +128,12 @@ class MainWindow(QMainWindow):
         progress.setMinimumDuration(50)
 
         cancelled = utils.merge_to_pdf(
-            files_list, download_path, file_name, pdf_compression, progress
+            files_list,
+            download_path,
+            file_name,
+            pdf_compression,
+            len(files_list),
+            progress,
         )
 
         if cancelled:

@@ -106,7 +106,7 @@ def delete_temp_file(temp_file_path=os.path.join(gettempdir(), TEMP_PDF_NAME)):
         os.remove(temp_file_path)
 
 
-def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, progress):
+def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progress):
     """PDF로 병합
 
     Args:
@@ -114,6 +114,7 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, progress):
         save_dir (str): 병합된 파일을 저장할 경로
         save_name (str): 병합된 파일을 저장할 이름
         pdf_compression (str): PDF 압축 저장 여부
+        length (str): files_list의 길이
         progress: Progress Dialog
 
     """
