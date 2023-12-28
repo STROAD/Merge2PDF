@@ -122,19 +122,14 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "파일 없음", "병합할 파일이 없습니다.")
             raise NoFileError
 
-        progress = QProgressDialog("파일 병합중...", "중단", 0, len(files_list) + 4, self)
+        progress = QProgressDialog("파일 병합중...", "중단", 0, len(files_list), self)
         progress.setWindowTitle("Merge to PDF")
         progress.setWindowModality(Qt.WindowModal)
         progress.setCancelButton(None)
         progress.setMinimumDuration(500)
 
         utils.merge_to_pdf(
-            files_list,
-            download_path,
-            file_name,
-            pdf_compression,
-            len(files_list),
-            progress,
+            files_list, download_path, file_name, pdf_compression, progress
         )
 
         QMessageBox.information(self, "파일 병합 완료", "파일 병합이 완료되었습니다.")
