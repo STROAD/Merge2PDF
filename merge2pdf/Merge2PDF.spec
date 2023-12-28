@@ -3,7 +3,7 @@
 
 a = Analysis(
     ['Merge2PDF.py'],
-    pathex=['.\\merge2pdf'],
+    pathex=['./merge2pdf'],
     binaries=[],
     datas=[('../resources/icon', 'icon')],
     hiddenimports=['Merge2PDF_UI', 'utils', 'resources_rc'],
@@ -31,7 +31,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['..\\resources\\icon\\Merge2PDF_Icon.ico'],
+    icon=['../resources/icon/Merge2PDF_Icon.ico'],
 )
 coll = COLLECT(
     exe,
