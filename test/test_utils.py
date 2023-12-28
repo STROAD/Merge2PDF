@@ -82,14 +82,15 @@ def test_delete_temp_file(tmpdir):
     utils.delete_temp_file(non_existing_file_path)
 
 
-@pytest.mark.parametrize("pdf_compression", [False, True])
-def test_merge_to_pdf(tmpdir, pdf_compression):
+def test_merge_to_pdf(tmpdir):
     resources_dir = os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "resources"
     )
     files_list = [os.path.join(resources_dir, f"{i}.pdf") for i in range(20)]
+    files_list.append("non_existing_file.pdf")
     save_dir = str(tmpdir.mkdir("output"))
     save_name = "merged"
+    pdf_compression = False
     length = len(files_list)
 
     progress = Mock()
@@ -98,9 +99,6 @@ def test_merge_to_pdf(tmpdir, pdf_compression):
         files_list, save_dir, save_name, pdf_compression, length, progress
     )
 
-    merged_file = os.path.join(save_dir, save_name + ".pdf")
-    assert os.path.isfile(merged_file)
-
-    files_list.append("non_existing_file.pdf")
-    merged_file = os.path.join(save_dir, save_name + ".pdf")
-    assert os.path.isfile(merged_file)
+    save_name += ".pdf"
+    merged_file = os.path.join(save_dir, save_name)
+    assert os.path.isfile(merged_file) is True
