@@ -15,7 +15,7 @@ def is_valid_path(path):
         path (str): 유효성 검사를 할 경로
 
     Returns:
-        bool
+        bool: True(유효한 경로) or False(유효하지 않은 경로)
 
     """
     if path is None or not isinstance(path, str):
@@ -41,7 +41,7 @@ def is_valid_name(name):
         name (str): 유효성 검사를 할 (파일)이름
 
     Returns:
-        bool
+        bool: True(유효한 이름) or False(유효하지 않은 이름)
 
     """
     name_pattern = r'^[^<>:"/\\|?*\x00-\x1F.]+$'
@@ -61,7 +61,7 @@ def is_file_name_duplicate(path, file_name):
         file_name (str): 파일 이름 중복 검사를 할 파일 이름
 
     Returns:
-        bool
+        bool: True(중복됨) or False(중복되지 않음)
 
     """
     file_name += ".pdf"
@@ -116,6 +116,9 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progr
         pdf_compression (str): PDF 압축 저장 여부
         length (str): files_list의 길이
         progress: Progress Dialog
+
+    Returns:
+        bool: True(병합 중단) or False(병합 중단 X)
 
     """
     cancelled = False
