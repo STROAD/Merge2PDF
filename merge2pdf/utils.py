@@ -162,6 +162,7 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progr
             )
         else:
             temp_pdf.save(os.path.join(save_dir, save_name))
+        progress.setValue(length)
 
     temp_pdf.close()
     delete_temp_file(temp_pdf_path)
