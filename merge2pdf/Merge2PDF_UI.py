@@ -350,6 +350,9 @@ class Ui_MainWindow(object):
         self.Button_remove.setText(
             QCoreApplication.translate("MainWindow", "\ud30c\uc77c \uc81c\uac70", None)
         )
+        self.Button_remove.setShortcut(
+            QCoreApplication.translate("MainWindow", "Del", None)
+        )
         self.menu_file.setTitle(
             QCoreApplication.translate("MainWindow", "\ud30c\uc77c", None)
         )

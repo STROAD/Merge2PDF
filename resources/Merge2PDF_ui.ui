@@ -352,6 +352,9 @@
         <property name="text">
          <string>파일 제거</string>
         </property>
+        <property name="shortcut">
+         <string>Del</string>
+        </property>
        </widget>
       </item>
      </layout>
