@@ -117,9 +117,11 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, progress):
         progress: Progress Dialog
 
     """
-    temp_pdf_path = create_temp_pdf()
+    cancelled = False
 
+    temp_pdf_path = create_temp_pdf()
     temp_pdf = fitz.open(temp_pdf_path)
+
     # 파일 병합
     for i, file in enumerate(files_list):
         try:
@@ -127,6 +129,10 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, progress):
                 raise FileNotFoundError
         except FileNotFoundError:
             continue
+
+        if progress.wasCanceled():
+            cancelled = True
+            break
 
         doc = fitz.open(file)
 
@@ -139,22 +145,24 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, progress):
 
         progress.setValue(i)
 
-    # create_temp_pdf()에서 임의로 생성한 빈 페이지 삭제
-    temp_pdf.delete_page(0)
+    if not cancelled:
+        # create_temp_pdf()에서 임의로 생성한 빈 페이지 삭제
+        temp_pdf.delete_page(0)
 
-    # 파일 저장
-    save_name += ".pdf"
-    if pdf_compression:
-        temp_pdf.save(
-            os.path.join(save_dir, save_name),
-            garbage=4,
-            deflate=True,
-            deflate_images=True,
-            deflate_fonts=True,
-        )
-    else:
-        temp_pdf.save(os.path.join(save_dir, save_name))
+        # 파일 저장
+        save_name += ".pdf"
+        if pdf_compression:
+            temp_pdf.save(
+                os.path.join(save_dir, save_name),
+                garbage=4,
+                deflate=True,
+                deflate_images=True,
+                deflate_fonts=True,
+            )
+        else:
+            temp_pdf.save(os.path.join(save_dir, save_name))
 
     temp_pdf.close()
-
     delete_temp_file(temp_pdf_path)
+
+    return cancelled
