@@ -1,7 +1,5 @@
 import sys
 import os
-import pytest
-from unittest.mock import Mock
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from merge2pdf import utils
@@ -82,6 +80,18 @@ def test_delete_temp_file(tmpdir):
     utils.delete_temp_file(non_existing_file_path)
 
 
+class MockProgress:
+    def __init__(self, value=0, canceled=False):
+        self._setValue = value
+        self._wasCanceled = canceled
+
+    def wasCanceled(self):
+        return self._wasCanceled
+
+    def setValue(self, value):
+        pass
+
+
 def test_merge_to_pdf(tmpdir):
     resources_dir = os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "resources"
@@ -93,12 +103,13 @@ def test_merge_to_pdf(tmpdir):
     pdf_compression = False
     length = len(files_list)
 
-    progress = Mock()
-
-    utils.merge_to_pdf(
+    progress = MockProgress()
+    cancelled = utils.merge_to_pdf(
         files_list, save_dir, save_name, pdf_compression, length, progress
     )
 
     save_name += ".pdf"
     merged_file = os.path.join(save_dir, save_name)
+
+    assert cancelled is False
     assert os.path.isfile(merged_file) is True
