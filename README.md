@@ -6,12 +6,12 @@ Merge to PDF는 1개 이상의 이미지, PDF 파일을 단일 PDF 파일로 병
 
 
 ## Merge to PDF 다운로드
-1. [여기서](https://github.com/STROAD/Merge2PDF/releases) Merge2PDF.zip을 다운로드 해주세요.
+1. [여기서](https://github.com/STROAD/Merge2PDF/releases) 최신 버전의 Merge2PDF.zip을 다운로드 해주세요.
 2. 다운로드 한 Merge2PDF.zip 파일을 압축해제 해주세요.
 3. Merge2PDF.exe를 실행해 주세요.
 
 
-## 사용 방법
+## 간단 사용 설명
 1. 병합하길 원하는 파일을 추가해 주세요.
 2. 저장 옵션을 적절하게 설정해 주세요.
 3. 병합 시작 버튼을 눌러 병합을 시작합니다.
