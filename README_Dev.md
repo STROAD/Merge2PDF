@@ -2,7 +2,7 @@
 Content related to the development of **Merge to PDF**.
 
 **Merge to PDF** was developed and tested using [Python](https://www.python.org) [3.12.1](https://www.python.org/downloads/release/python-3121) on Windows 11.  
-It uses the [PySide6](https://pypi.org/project/PySide6), [PyMuPDF](https://github.com/pymupdf/PyMuPDF) libraries.  
+It uses the [PySide6](https://pypi.org/project/PySide6) 6.6.1, [PyMuPDF](https://github.com/pymupdf/PyMuPDF) 1.23.8 libraries.  
 It uses [Black](https://github.com/psf/black) as a code formatter.  
 It uses [pytest](https://github.com/pytest-dev/pytest) for testing.
 
