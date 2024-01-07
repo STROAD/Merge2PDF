@@ -32,19 +32,19 @@ Run Merge2PDF.py
 ```
 📦 Merge2PDF
 ├─ 📜 README.md
-├─ 📜 README_Dev.md
+├─ 📜 README_Dev.md  ------------->  README.md for Developers
 ├─ 📜 .gitignore
 ├─ 📜 LICENSE
 ├─ 📁 merge2pdf
 │   ├─ 📜 __init__.py
-│   ├─ 📜 Merge2PDF.py
-│   ├─ 📜 Merge2PDF_UI.py
-│   ├─ 📜 utils.py
-│   ├─ 📜 custom_errors.py
-│   ├─ 📜 resources_rc.py
-│   └─ 📜 Merge2PDF.spec
+│   ├─ 📜 Merge2PDF.py  ---------->  main
+│   ├─ 📜 Merge2PDF_UI.py  ------->  GUI(PySide6)
+│   ├─ 📜 utils.py  -------------->  utils
+│   ├─ 📜 custom_errors.py  ------>  My custom error collection
+│   ├─ 📜 resources_rc.py  ------->  Resources for GUI
+│   └─ 📜 Merge2PDF.spec  -------->  spec for building exe files
 ├─ 📁 resources
-│   ├─ 📜 Merge2PDF_ui.ui
+│   ├─ 📜 Merge2PDF_ui.ui  ------->  .ui files for Qt Designer
 │   ├─ 📜 resources_rc.qrc
 │   └─ 📁 icon
 │       └─ 📜 Merge2PDF_Icon.ico
