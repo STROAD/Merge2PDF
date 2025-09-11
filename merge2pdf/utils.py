@@ -1,6 +1,7 @@
 import os
 from tempfile import gettempdir
 import fitz
+import comtypes.client
 from re import match
 
 
@@ -116,8 +117,8 @@ def convert_to_pdf(file_path, save_dir=gettempdir(), save_name=TEMP_PDF_NAME):
         save_name (str): 변환된 파일을 저장할 이름
 
     Returns:
-        pdf_path (str): 변환된 파일의 경로
-    
+        pdf_path (str): 변환된 PDF 파일의 경로
+
     """
 
 
