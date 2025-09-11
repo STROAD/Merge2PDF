@@ -106,6 +106,21 @@ def delete_temp_file(temp_file_path=os.path.join(gettempdir(), TEMP_PDF_NAME)):
         os.remove(temp_file_path)
 
 
+def convert_to_pdf(file_path, save_dir=gettempdir(), save_name=TEMP_PDF_NAME):
+    """PDF로 변환
+    PowerPoint, Word 파일을 PDF로 변환
+
+    Args:
+        file_path (str): 변환할 파일의 경로
+        save_dir (str): 변환된 파일을 저장할 경로
+        save_name (str): 변환된 파일을 저장할 이름
+
+    Returns:
+        pdf_path (str): 변환된 파일의 경로
+    
+    """
+
+
 def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progress):
     """PDF로 병합
 
