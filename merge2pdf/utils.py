@@ -107,6 +107,27 @@ def delete_temp_file(temp_file_path=os.path.join(gettempdir(), TEMP_PDF_NAME)):
         os.remove(temp_file_path)
 
 
+def is_office_app_installed(app_name):
+    """Office 애플리케이션이 설치되었는지 확인
+
+    Args:
+        app_name (str): 확인할 애플리케이션의 COMProgID (예: "PowerPoint.Application").
+
+    Returns:
+        bool: 애플리케이션이 설치되었으면 True, 아니면 False
+    """
+    try:
+        # COM 객체 생성을 시도
+        comtypes.client.CreateObject(app_name, dynamic=True)
+        return True
+    except (OSError, comtypes.COMError):
+        # COM 객체 생성에 실패시 설치되지 않은 것으로 간주
+        return False
+    except Exception as e:
+        print(f"애플리케이션 설치 여부 확인 중 오류 발생: {e}")
+        return False
+
+
 def convert_to_pdf(file_path, save_dir=gettempdir(), save_name=TEMP_PDF_NAME):
     """PDF로 변환
     PowerPoint, Word 파일을 PDF로 변환
@@ -144,7 +165,7 @@ def convert_to_pdf(file_path, save_dir=gettempdir(), save_name=TEMP_PDF_NAME):
         return save_path
 
     except Exception as e:
-        print(f"변환 중 오류가 발생했습니다: {e}")
+        print(f"변환 중 오류 발생 {e}")
         delete_temp_file(save_path)
         raise e
 
