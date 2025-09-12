@@ -121,6 +121,39 @@ def convert_to_pdf(file_path, save_dir=gettempdir(), save_name=TEMP_PDF_NAME):
 
     """
 
+    file_path = os.path.abspath(file_path)
+    save_path = os.path.abspath(os.path.join(save_dir, save_name))
+
+    app = None
+    try:
+        file_extension = os.path.splitext(file_path)[1].lower()
+
+        if file_extension in [".ppt", ".pptx"]:
+            app = comtypes.client.CreateObject("PowerPoint.Application")
+            doc = app.Presentations.Open(file_path, WithWindow=False)
+            save_format = 32  # ppSaveAsPDF
+
+        elif file_extension in [".doc", ".docx"]:
+            app = comtypes.client.CreateObject("Word.Application")
+            doc = app.Documents.Open(file_path, ReadOnly=True)
+            save_format = 17  # wdFormatPDF
+
+        # app.Visible = False
+        doc.SaveAs(save_path, FileFormat=save_format)
+
+        return save_path
+
+    except Exception as e:
+        print(f"변환 중 오류가 발생했습니다: {e}")
+        delete_temp_file(save_path)
+        raise e
+
+    finally:
+        if doc:
+            doc.Close()
+        if app:
+            app.Quit()
+
 
 def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progress):
     """PDF로 병합
