@@ -128,6 +128,35 @@ def is_office_app_installed(app_name):
         return False
 
 
+def get_supported_extensions(type=0):
+    """지원 가능한 확장자 확인
+
+    Args:
+        type (int): 지원 가능 확장자를 반환해줄 때 어떤 형식으로 반환할지 설졍
+            type 0: ('.pdf', '.png'), type 1: ("*.pdf *.png")
+
+    Returns:
+        supported_extensions (tuple): 지원 가능한 확장자
+    """
+    supported_extensions = tuple()
+
+    SUPPORTED_DEFAULT_EXTENSIONS = (".pdf", ".png", ".jpg", ".jpeg")
+    SUPPORTED_PPT_EXTENSIONS = (".ppt", ".pptx")
+    SUPPORTED_WORD_EXTENSIONS = (".doc", ".docx")
+
+    supported_extensions += SUPPORTED_DEFAULT_EXTENSIONS
+
+    if is_office_app_installed("PowerPoint.Application"):
+        supported_extensions += SUPPORTED_PPT_EXTENSIONS
+    if is_office_app_installed("Word.Application"):
+        supported_extensions += SUPPORTED_WORD_EXTENSIONS
+
+    if type == 1:
+        supported_extensions = (" ".join(f"*{_}" for _ in supported_extensions),)
+
+    return supported_extensions
+
+
 def convert_to_pdf(file_path, save_dir=gettempdir(), save_name=TEMP_PDF_NAME):
     """PDF로 변환
     PowerPoint, Word 파일을 PDF로 변환
