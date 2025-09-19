@@ -12,6 +12,7 @@ TEMP_PDF_NAME = "temp_pdf_file.pdf"
 def is_valid_path(path):
     """경로 유효성 검사
     입력받은 경로가 존재하는 디렉터리인지, 절대경로인지, 접근 가능한지 확인
+
     Args:
         path (str): 유효성 검사를 할 경로
 
@@ -133,7 +134,7 @@ def get_supported_extensions(type=0):
 
     Args:
         type (int): 지원 가능 확장자를 반환해줄 때 어떤 형식으로 반환할지 설졍
-            type 0: ('.pdf', '.png'), type 1: ("*.pdf *.png")
+            type 0: ('.pdf', '.png', ..., '.jpeg'), type 1: ("*.pdf *.png ... *.jpeg",)
 
     Returns:
         supported_extensions (tuple): 지원 가능한 확장자
