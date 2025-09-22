@@ -14,6 +14,10 @@ from custom_errors import *
 from __init__ import __version__
 
 
+suported_extensions = utils.get_supported_extensions(type=0)
+filedialog_filter = utils.get_supported_extensions(type=1)
+
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -42,7 +46,7 @@ class MainWindow(QMainWindow):
             files_list = [
                 "".join((folder, "\\", file))
                 for file in os.listdir(folder)
-                if file.endswith((".pdf", ".png", ".jpg", ".jpeg"))
+                if file.endswith(suported_extensions)
             ]
             file_list_widget.addItems(files_list)
 
@@ -55,7 +59,7 @@ class MainWindow(QMainWindow):
         files = QFileDialog.getOpenFileNames(
             self,
             "Select Files",
-            filter="사용자 지정 파일 (*.png *.jpg *.jpeg *.pdf)",
+            filter=f"사용자 지정 파일 ({filedialog_filter[0]})",
         )[0]
 
         if files:
@@ -99,14 +103,18 @@ class MainWindow(QMainWindow):
         file_name = self.ui.lineEdit_name.text()
 
         if not utils.is_valid_path(download_path):
-            QMessageBox.warning(self, "다운로드 위치 오류", "다운로드 위치가 잘못되었습니다.")
+            QMessageBox.warning(
+                self, "다운로드 위치 오류", "다운로드 위치가 잘못되었습니다."
+            )
             raise PathError(download_path)
         elif not utils.is_valid_name(file_name):
             QMessageBox.warning(self, "파일 이름 오류", "파일 이름이 잘못되었습니다.")
             raise FileNameError(file_name, "invalid")
         elif utils.is_file_name_duplicate(download_path, file_name):
             reply = QMessageBox.question(
-                self, "파일 이름 중복", "동일한 이름의 파일이 존재합니다. 덮어 씌우겠습니까?"
+                self,
+                "파일 이름 중복",
+                "동일한 이름의 파일이 존재합니다. 덮어 씌우겠습니까?",
             )
 
             if reply == QMessageBox.StandardButton.No:
@@ -122,7 +130,9 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "파일 없음", "병합할 파일이 없습니다.")
             raise NoFileError
 
-        progress = QProgressDialog("파일 병합중...", "중단", 0, len(files_list) + 2, self)
+        progress = QProgressDialog(
+            "파일 병합중...", "중단", 0, len(files_list) + 2, self
+        )
         progress.setWindowTitle("Merge to PDF")
         progress.setWindowModality(Qt.WindowModal)
         progress.setMinimumDuration(0)
@@ -137,9 +147,13 @@ class MainWindow(QMainWindow):
         )
 
         if cancelled:
-            QMessageBox.information(self, "파일 병합 취소", "파일 병합이 취소되었습니다.")
+            QMessageBox.information(
+                self, "파일 병합 취소", "파일 병합이 취소되었습니다."
+            )
         else:
-            QMessageBox.information(self, "파일 병합 완료", "파일 병합이 완료되었습니다.")
+            QMessageBox.information(
+                self, "파일 병합 완료", "파일 병합이 완료되었습니다."
+            )
 
 
 if __name__ == "__main__":
