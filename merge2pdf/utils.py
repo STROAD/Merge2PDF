@@ -225,6 +225,7 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progr
 
     temp_pdf_path = create_temp_pdf()
     temp_pdf = fitz.open(temp_pdf_path)
+    office_pdf = None
     progress.setValue(0)
 
     # 파일 병합
@@ -239,17 +240,26 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progr
             cancelled = True
             break
 
-        doc = fitz.open(file)
         progress.setValue(1 + i)
+        if file.endswith((".ppt", ".pptx", ".doc", ".docx")):
+            office_pdf = convert_to_pdf(file, gettempdir(), "temp_office_to_pdf.pdf")
+            progress.setValue(2 + i)
+            doc = fitz.open(office_pdf)
+        else:
+            doc = fitz.open(file)
 
+        progress.setValue(3 + i)
         if file.endswith(".pdf"):
             temp_pdf.insert_pdf(doc)
         else:
             temp_pdf.insert_file(doc)
 
+        progress.setValue(4 + i)
         doc.close()
 
-        progress.setValue(2 + i)
+        if office_pdf != None:
+            delete_temp_file(office_pdf)
+        progress.setValue(5 + i)
 
     if not cancelled:
         # create_temp_pdf()에서 임의로 생성한 빈 페이지 삭제
