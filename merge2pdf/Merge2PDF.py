@@ -162,7 +162,4 @@ if __name__ == "__main__":
     window = MainWindow()
     window.show()
 
-    try:
-        sys.exit(app.exec())
-    except SystemExit:
-        utils.delete_temp_file()
+    sys.exit(app.exec())

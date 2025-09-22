@@ -222,64 +222,71 @@ def merge_to_pdf(files_list, save_dir, save_name, pdf_compression, length, progr
 
     """
     cancelled = False
-
-    temp_pdf_path = create_temp_pdf()
-    temp_pdf = fitz.open(temp_pdf_path)
     office_pdf = None
-    progress.setValue(0)
 
-    # 파일 병합
-    for i, file in enumerate(files_list):
-        try:
-            if not os.path.exists(file):
-                raise FileNotFoundError
-        except FileNotFoundError:
-            continue
+    try:
+        temp_pdf_path = create_temp_pdf()
+        temp_pdf = fitz.open(temp_pdf_path)
+        progress.setValue(0)
 
-        if progress.wasCanceled():
-            cancelled = True
-            break
+        # 파일 병합
+        for i, file in enumerate(files_list):
+            try:
+                if not os.path.exists(file):
+                    raise FileNotFoundError
+            except FileNotFoundError:
+                continue
 
-        progress.setValue(1 + i)
-        if file.endswith((".ppt", ".pptx", ".doc", ".docx")):
-            office_pdf = convert_to_pdf(file, gettempdir(), "temp_office_to_pdf.pdf")
-            progress.setValue(2 + i)
-            doc = fitz.open(office_pdf)
-        else:
-            doc = fitz.open(file)
+            if progress.wasCanceled():
+                cancelled = True
+                break
 
-        progress.setValue(3 + i)
-        if file.endswith(".pdf"):
-            temp_pdf.insert_pdf(doc)
-        else:
-            temp_pdf.insert_file(doc)
+            progress.setValue(1 + i)
+            if file.endswith((".ppt", ".pptx", ".doc", ".docx")):
+                office_pdf = convert_to_pdf(
+                    file, gettempdir(), "temp_office_to_pdf.pdf"
+                )
+                progress.setValue(2 + i)
+                doc = fitz.open(office_pdf)
+            else:
+                doc = fitz.open(file)
 
-        progress.setValue(4 + i)
-        doc.close()
+            progress.setValue(3 + i)
+            if file.endswith(".pdf"):
+                temp_pdf.insert_pdf(doc)
+            else:
+                temp_pdf.insert_file(doc)
 
+            progress.setValue(4 + i)
+            doc.close()
+
+            if office_pdf != None:
+                delete_temp_file(office_pdf)
+                office_pdf = None
+            progress.setValue(5 + i)
+
+        if not cancelled:
+            # create_temp_pdf()에서 임의로 생성한 빈 페이지 삭제
+            temp_pdf.delete_page(0)
+
+            # 파일 저장
+            save_name += ".pdf"
+            if pdf_compression:
+                temp_pdf.save(
+                    os.path.join(save_dir, save_name),
+                    garbage=4,
+                    deflate=True,
+                    deflate_images=True,
+                    deflate_fonts=True,
+                )
+            else:
+                temp_pdf.save(os.path.join(save_dir, save_name))
+            progress.setValue(length + 2)
+    finally:
         if office_pdf != None:
+            office_pdf.close()
             delete_temp_file(office_pdf)
-        progress.setValue(5 + i)
-
-    if not cancelled:
-        # create_temp_pdf()에서 임의로 생성한 빈 페이지 삭제
-        temp_pdf.delete_page(0)
-
-        # 파일 저장
-        save_name += ".pdf"
-        if pdf_compression:
-            temp_pdf.save(
-                os.path.join(save_dir, save_name),
-                garbage=4,
-                deflate=True,
-                deflate_images=True,
-                deflate_fonts=True,
-            )
-        else:
-            temp_pdf.save(os.path.join(save_dir, save_name))
-        progress.setValue(length + 2)
-
-    temp_pdf.close()
-    delete_temp_file(temp_pdf_path)
+        temp_pdf.close()
+        delete_temp_file(temp_pdf_path)
 
     return cancelled
